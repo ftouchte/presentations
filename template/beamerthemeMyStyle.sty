@@ -3,7 +3,10 @@
 %%%%%%%%%%%%%%%%%%%%%%
 % Color definition
 %%%%%%%%%%%%%%%%%%%%%%
-\definecolor{MainBlue}{RGB}{20, 30, 120}
+%\definecolor{TextColorBlue}{RGB}{20, 30, 120}
+%\definecolor{BgColorBlue}{RGB}{150, 184, 235}
+\definecolor{TextColorBlue}{RGB}{20, 30, 120}
+\definecolor{BgColorBlue}{RGB}{122, 91, 247}
 \definecolor{Accent}{RGB}{200, 40, 40}
 \definecolor{LightGray}{RGB}{245,245,245}
 
@@ -12,9 +15,9 @@
 %%%%%%%%%%%%%%%%%%%%%%
 \setbeamercolor{background canvas}{bg=white}
 \setbeamercolor{normal text}{fg=black}
-\setbeamercolor{frametitle}{fg=MainBlue}
-\setbeamercolor{title}{fg=MainBlue}
-\setbeamercolor{structure}{fg=MainBlue}
+\setbeamercolor{frametitle}{fg=TextColorBlue}
+\setbeamercolor{title}{fg=TextColorBlue}
+\setbeamercolor{structure}{fg=TextColorBlue}
 \setbeamercolor{alerted text}{fg=Accent}
 
 %%%%%%%%%%%%%%%%%%%%%%
@@ -34,13 +37,15 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Custom itemize style
 %%%%%%%%%%%%%%%%%%%%%%%%%%%
-\setbeamertemplate{itemize item}{\color{MainBlue}$\blacktriangleright$}
-\setbeamertemplate{itemize subitem}{\color{Accent}$\bullet$}
+\setbeamertemplate{itemize item}{\color{TextColorBlue}$\blacktriangleright$}
+\setbeamertemplate{itemize subitem}{$\circ$}
+%\setbeamertemplate{itemize subitem}{\color{Accent}$\circ$}
+%\setbeamertemplate{itemize subsubitem}{--} 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Block styles (for the “boxed content”)
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\setbeamercolor{block title}{bg=MainBlue, fg=white}
+\setbeamercolor{block title}{bg=BgColorBlue, fg=white}
 \setbeamercolor{block body}{bg=LightGray, fg=black}
 
 \setbeamercolor{block title alerted}{bg=Accent, fg=white}
@@ -53,11 +58,10 @@
 \setbeamertemplate{title page}{
   
   % ---------- Background ----------
-  \definecolor{ThisBlue}{RGB}{150, 184, 235}
   \begin{tikzpicture}[remember picture,overlay]
-    %\fill[color=ThisBlue!80] (current page.north west) rectangle 
+    %\fill[color=BgColorBlue!80] (current page.north west) rectangle 
     %                 (current page.south east);
-    \shade[inner color=ThisBlue!20, outer color=ThisBlue!80] (current page.north west) rectangle 
+    \shade[inner color=BgColorBlue!20, outer color=BgColorBlue!80] (current page.north west) rectangle 
                      (current page.south east);
   \end{tikzpicture}
 
@@ -87,13 +91,13 @@
     % ---------- Title ----------
     \begin{tikzpicture}[remember picture,overlay]
         \node at (current page.center) [
-            draw,
+            draw=TextColorBlue,
             rounded corners=8pt,
             fill=white,
             inner sep=10pt,
             text width=0.7\paperwidth,
             align=center
-        ] {{\usebeamerfont{title}\color{black}\inserttitle\par}};
+        ] {{\usebeamerfont{title}\color{TextColorBlue}\inserttitle\par}};
     \end{tikzpicture}
     
 
@@ -108,14 +112,14 @@
     \vspace{3cm}
 
     % ---------- Author & Institute ----------
-    {\large\color{black}\insertauthor\par}
+    {\large\color{TextColorBlue}\insertauthor\par}
     \vspace{0.2cm}
-    {\color{black}\insertinstitute\par}
+    {\color{TextColorBlue}\insertinstitute\par}
 
     \vfill
 
     % ---------- Date ----------
-    {\color{black}\insertdate\par}
+    {\color{TextColorBlue}\insertdate\par}
   \end{center}
 
 }
@@ -124,18 +128,17 @@
 % Slide header template
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \setbeamertemplate{frametitle}{} % désactiver le titre par défaut pour pouvoir l'inclure dans le header
-\definecolor{ThisBlue}{RGB}{150, 184, 235}
 \setbeamertemplate{headline}{
 \ifnum\value{framenumber}>1
   \leavevmode
   \begin{tikzpicture}[remember picture,overlay]
-    \shade[left color=ThisBlue!80, right color=ThisBlue!20]
+    \shade[left color=BgColorBlue!80, right color=BgColorBlue!20]
       (current page.north west) rectangle ([yshift=-\dimexpr0.8cm+2ex\relax] current page.north east);
   \end{tikzpicture}
     \begin{beamercolorbox}[wd=\paperwidth,ht=0.8cm,dp=2ex]{headline}
       \hspace{1em}
       %\insertsection
-      {\color{MainBlue} \usebeamerfont{frametitle}\insertshortframetitle}
+      {\color{TextColorBlue} \usebeamerfont{frametitle}\insertshortframetitle}
       \hfill
       \includegraphics[height=0.7cm]{logos/logo-paris-saclay.png}
       \hspace{0.4cm}
@@ -148,11 +151,10 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Custom footer
 %%%%%%%%%%%%%%%%%%%%%%%%%%%
-%\setbeamercolor{author in head/foot}{bg=ThisBlue!60, fg=MainBlue}
 \setbeamertemplate{footline}{
   \leavevmode%
   \begin{tikzpicture}[remember picture,overlay]
-    \shade[left color=ThisBlue!20, right color=ThisBlue!80]
+    \shade[left color=BgColorBlue!20, right color=BgColorBlue!80]
       (current page.south west) rectangle ([yshift=+\dimexpr2.5ex+1ex\relax] current page.south east);
   \end{tikzpicture}
   \hbox{%
