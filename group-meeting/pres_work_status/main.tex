@@ -1,0 +1,513 @@
+\documentclass[aspectratio=169]{beamer}
+
+\usepackage{tikz}
+\usepackage{xcolor}
+\usepackage{caption}
+\usepackage{subcaption}
+\usepackage{tabularx}
+\usepackage{bm}
+\usepackage{amsfonts}
+
+\usetheme{MyStyle}   % loads beamerthemeMyStyle.sty
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\title{Experimental study of the strong interaction with the spectrometer CLAS and ALERT at JLab}
+%\title{My Presentation Title}
+\author{Felix Touchte Codjo}
+\institute{IJCLab}
+\date{\today}
+
+
+\begin{document}
+
+\begin{frame}[plain] % remove header, footer, barre de navigation
+\titlepage
+\end{frame}
+
+%\begin{frame}{Outline}
+%\tableofcontents
+%\end{frame}
+
+\section{ALERT experiment}
+
+\begin{frame}{ALERT experiment}
+    \begin{itemize}
+        \item ALERT is a detector. It stands for \alert{A} \alert{L}ow \alert{E}nergy \alert{R}ecoil \alert{T}agger
+            \begin{itemize}
+                \item a hyperbolic drift chamber (AHDC) $\rightarrow$ IJClab, France
+                \item + a time-of-flight (ATOF) $\rightarrow$ Argonne Laboratory, US
+            \end{itemize}
+        \item It is also an experiment with a wide program in nuclear physics
+            \begin{itemize}
+                \item e.g. \alert{Deeply Virtual Compton Scattering (DVCS) on $^4\mbox{He}$}
+            \end{itemize}
+        \item The experiment took place at JLab from April 2025 to September 2025
+        %\item 
+        \begin{figure}
+            \centering
+            \begin{subfigure}{0.35\textwidth}
+                \includegraphics[width=\linewidth]{figures/alert-detector.png}
+            \end{subfigure}
+            \hspace{0.05\textwidth}
+            \begin{subfigure}{0.35\textwidth}
+                \includegraphics[width=\linewidth]{figures/build/feynam-diagram-dvcs-he4.pdf}
+            \end{subfigure}
+        \end{figure}
+    \end{itemize}
+\end{frame}
+
+\begin{frame}{Run period at JLab}
+    \begin{itemize}
+        \item The experimental setup was the following:
+        \begin{itemize}
+            \item The electron beam is delivered by CEBAF
+            \item The target is located at the center of ALERT
+            \item The low recoil fragments are detected by ALERT
+            \item The scattered electrons and produced photons are detected by CLAS12
+        \end{itemize}
+    \end{itemize}
+    \begin{figure}
+        \centering
+        \begin{subfigure}{0.28\textwidth}
+            \includegraphics[width=\linewidth]{figures/cebaf.png}
+            \caption{CEBAF, can deliver spin polarized electron beam with energy up to 11 GeV}
+        \end{subfigure}
+        \hspace{0.01\textwidth}
+        \begin{subfigure}{0.28\textwidth}
+            \includegraphics[width=\linewidth]{figures/build/feynam-diagram-dvcs-he4.pdf}
+            \caption{example of physics process : nuclear DVCS on $^4\mbox{He}$}
+        \end{subfigure}
+        \hspace{0.01\textwidth}
+        \begin{subfigure}{0.28\textwidth}
+            \includegraphics[width=\linewidth]{figures/clas12.png}
+            \caption{CLAS12, good $e^-$ and $\gamma$ identification over a large kinematics coverage}
+        \end{subfigure}
+    \end{figure}
+\end{frame}
+
+\begin{frame}{Run period at JLab}
+    \begin{itemize}
+        \item We took data on several nuclear targets (H2, D2, He4) and with different beam energies (2 GeV, 6 GeV, 10.6 GeV) 
+        \item I was at JLab during a good part the run period (until July 2025)
+            \begin{itemize}
+                \item Target expert (target change every one or two weeks, target purge every day)
+                \item ALERT expert (monitor the quality of the data taking, on-call person)
+            \end{itemize}
+        \item The data taking was a success, we achieved our goal in terms of accumulated charge
+        \item \alert{Now, all efforts are dedicated the finalization of the reconstruction software}
+    \end{itemize}
+    
+\end{frame}
+
+\section{Simulation}
+
+\begin{frame}{Simulation}
+    \begin{itemize}
+        \item Generate the characteristic signal of the AHDC from the Geant4 digitization
+            \begin{itemize}
+                \item collection of hits $\{(E_s, x_s, y_s, z_s, p_{x_s}, ...)\}_s \longrightarrow$ signal over the time 
+            \end{itemize}
+    \end{itemize}
+    \begin{figure}
+        \centering
+        \begin{subfigure}{0.35\textwidth}
+            \includegraphics[width=\linewidth]{figures/build/ahdc_cell.pdf}
+            \caption{AHDC detection cell}
+        \end{subfigure}
+        \hspace{0.05\textwidth}
+        \begin{subfigure}{0.45\textwidth}
+            \includegraphics[width=\linewidth]{figures/build/ahdc_signal_landau.pdf}
+            \caption{Shape of the AHDC signal}
+        \end{subfigure}
+    \end{figure}
+\end{frame}
+
+\begin{frame}{Simulation}
+    \begin{itemize}
+        \item We have identified few control parameters that have to be calibrated in order to match real data
+        \begin{itemize}
+            \item (inverse of) time2distance
+            \item reference time ($t_0$)
+            \item signal width parameter (for a Landau distribution, it is linked to the timeOverThreshold)
+            \item proportionality factor (conversion of MeV to ADC)
+            \item noise level
+        \end{itemize}
+    \end{itemize}
+    \begin{figure}
+        \centering
+        \begin{subfigure}{0.25\textwidth}
+            \includegraphics[width=\linewidth]{figures/build/ahdc_cell.pdf}
+        \end{subfigure}
+        \hspace{0.05\textwidth}
+        \begin{subfigure}{0.35\textwidth}
+            \includegraphics[width=\linewidth]{figures/build/ahdc_signal_landau.pdf}
+        \end{subfigure}
+    \end{figure}
+\end{frame}
+
+\begin{frame}{Simulation (results)}
+    \begin{itemize}
+        \item The distributions look very similar (the peaks are located at the same place)
+        \item Simulation (top) versus real data (bottom) for elastics deuterons (run 22712)
+        \item We have overestimated the noise in simulation, but we didn't manage to spread the distribution as in real data
+        \item Taking into account the calibration of the amplitude and of the timeOverThreshold in the future could improve the result for real data
+    \end{itemize}
+    \begin{figure}
+        \centering
+        \begin{subfigure}{0.242\textwidth}
+            \includegraphics[width=\linewidth]{figures/simu-deuteron-signal.pdf}
+        \end{subfigure}
+        \begin{subfigure}{0.242\textwidth}
+            \includegraphics[width=\linewidth]{figures/simu-deuteron-amplitude.pdf}
+        \end{subfigure}
+        \begin{subfigure}{0.242\textwidth}
+            \includegraphics[width=\linewidth]{figures/simu-deuteron-timeOverThreshold.pdf}
+        \end{subfigure}
+        \begin{subfigure}{0.242\textwidth}
+            \includegraphics[width=\linewidth]{figures/simu-deuteron-time.pdf}
+        \end{subfigure}
+
+        \vspace{0.2cm}
+
+        \begin{subfigure}{0.242\textwidth}
+            \includegraphics[width=\linewidth]{figures/data-deuteron-signal.pdf}
+        \end{subfigure}
+        \begin{subfigure}{0.242\textwidth}
+            \includegraphics[width=\linewidth]{figures/data-deuteron-amplitude.pdf}
+        \end{subfigure}
+        \begin{subfigure}{0.242\textwidth}
+            \includegraphics[width=\linewidth]{figures/data-deuteron-timeOverThreshold.pdf}
+        \end{subfigure}
+        \begin{subfigure}{0.242\textwidth}
+            \includegraphics[width=\linewidth]{figures/data-deuteron-time.pdf}
+        \end{subfigure}
+    \end{figure}
+\end{frame}
+
+\section{Decoding}
+
+\begin{frame}{Decoding}
+    \begin{itemize}
+        \item The decoding consists of the extraction of the \textbf{leadingEdgeTime}, \textbf{timeOverThreshold}, \textbf{pedestal} and \textbf{amplitude} from a given AHDC pulse
+        \item Even in simulation, the quality of the decoding varies with the amplitude of the signal (deltaTime = true - reconstructed)
+        \item Proton signals have very low amplitudes (~ 200 ADC), how can we trust the decoding?
+    \end{itemize}
+    \begin{figure}
+        \centering
+        \begin{subfigure}{0.45\textwidth}
+            \includegraphics[width=\linewidth]{figures/simu-deuteron-signal.pdf}
+        \end{subfigure}
+        \hspace{0.02\textwidth}
+        \begin{subfigure}{0.45\textwidth}
+            \includegraphics[width=\linewidth]{figures/simu-deuteron-deltaTime_amplitude.pdf}
+        \end{subfigure}
+    \end{figure}
+\end{frame}
+
+\begin{frame}{Waveform classification}
+    \begin{itemize}
+        \item We have identified seven different patterns for the AHDC signals
+    \end{itemize}
+    \hspace{0.5cm}
+    \begin{minipage}{0.45\textwidth}
+        \begin{itemize}
+            \small
+            \item[$\circ$] 6 $\rightarrow$ too short (nsamples $\leq$ 10)
+            \item[$\circ$] 5 $\rightarrow$ decreasing baseline
+            \item[$\circ$] 4 $\rightarrow$ bad ToT (ToT $<$ 300)
+            \item[$\circ$] 3 $\rightarrow$ pileup (not done yet)
+        \end{itemize}
+    \end{minipage}
+    \begin{minipage}{0.4\textwidth}
+        \begin{itemize}
+            \small
+            \item[$\circ$] 2 $\rightarrow$ bad trailingEdgeTime
+            \item[$\circ$] 1 $\rightarrow$ saturating
+            \item[$\circ$] 0 $\rightarrow$ good
+            \item[] 
+        \end{itemize}
+        
+    \end{minipage}
+
+    \begin{figure}
+        \raggedright
+        \begin{subfigure}{0.242\textwidth}
+            \includegraphics[width=\linewidth]{figures/wfType6.pdf}
+        \end{subfigure}
+        \begin{subfigure}{0.242\textwidth}
+            \includegraphics[width=\linewidth]{figures/wfType5.pdf}
+        \end{subfigure}
+        \begin{subfigure}{0.242\textwidth}
+            \includegraphics[width=\linewidth]{figures/wfType4.pdf}
+        \end{subfigure}
+        \begin{subfigure}{0.242\textwidth}
+            \includegraphics[width=\linewidth]{figures/wfType3.pdf}
+        \end{subfigure}
+
+        \vspace{0.2cm}
+        
+        \begin{subfigure}{0.242\textwidth}
+            \includegraphics[width=\linewidth]{figures/wfType2.pdf}
+        \end{subfigure}
+        \begin{subfigure}{0.242\textwidth}
+            \includegraphics[width=\linewidth]{figures/wfType1.pdf}
+        \end{subfigure}
+        \begin{subfigure}{0.242\textwidth}
+            \includegraphics[width=\linewidth]{figures/wfType0.pdf}
+        \end{subfigure}
+    \end{figure}
+\end{frame}
+
+\begin{frame}{Hit selection}
+    \begin{itemize}
+        \item Criteria: wfType $\leq$ 2 and quality cuts
+        \item Run 23003, beam current 200 nA
+    \end{itemize}
+    \begin{figure}
+        \centering
+        \includegraphics[width=0.72\linewidth]{figures/hit-selection-evolution.png}
+    \end{figure}
+\end{frame}
+
+% \begin{frame}{Calibration (time2distance)}
+%     \begin{itemize}
+%         \item Haha
+%     \end{itemize}
+%     \begin{figure}
+%         \centering
+%         \begin{subfigure}{0.32\textwidth}
+%             \includegraphics[width=\linewidth]{figures/residual_pre_time2distance_calib.pdf}
+%         \end{subfigure}
+%         \begin{subfigure}{0.32\textwidth}
+%             \includegraphics[width=\linewidth]{figures/time2distance.pdf}
+%         \end{subfigure}
+%         \begin{subfigure}{0.32\textwidth}
+%             \includegraphics[width=\linewidth]{figures/residual_post_time2distance_calib.pdf}
+%         \end{subfigure}
+%     \end{figure}
+    
+% \end{frame}
+
+\section{Kalman Filter}
+
+\begin{frame}{Kalman Filter (principle)}
+    \begin{itemize}
+        \item Give an estimation of the true state $\bm{x}_k$ knowing a series of measurements $\bm{z}_1...\bm{z}_k$
+            \begin{equation*}
+                \bm{\hat{x}}_{k|k} = \mathbb{E}[\bm{x}_k | \bm{z}_1...\bm{z}_k]
+            \end{equation*}
+        \item Conditions:
+            \begin{itemize}
+                \item a discrete evolution model
+                    \begin{equation*}
+                        \bm{x_k} = f(\bm{x}_{k-1}, u_{k-1}, w_{k-1}) 
+                    \end{equation*}
+                \item an expression of the measurement as function of the state
+                    \begin{equation*}
+                        \bm{z_k} = h(\bm{x}_k, v_{k-1}) 
+                    \end{equation*}
+            \end{itemize}
+        \item $w_k$, $v_k$ are respectively the process noise and the measurement noise; $u_k$ is an optional control input
+    \end{itemize}
+    
+\end{frame}
+
+\begin{frame}{Kalman Filter (algorithm)}
+    \begin{itemize}
+        \item The Kalman Filter is recursive
+        \item During each update, the Kalman filter minimize the error covariance matrix
+            \begin{equation*}
+                \bm{P}_{k|k} = \mathbb{E}[(\bm{x}_k - \bm{\hat{x}}_{k|k})(\bm{x}_k - \bm{\hat{x}}_{k|k})^T]
+            \end{equation*}
+        \item \alert{Figure to be updated to match the notations}
+    \end{itemize}
+    \begin{figure}
+        \centering
+        \includegraphics[width=0.7\linewidth]{figures/tmp-kalman-filter-algo.png}
+    \end{figure}
+\end{frame}
+
+\begin{frame}{Kalman Filter (visualisation)}
+    \begin{itemize}
+        \item This simulation. The system evolves from left to right. Niter = 60 (this example).
+    \end{itemize}
+    \begin{figure}
+        \centering
+        \includegraphics[width=0.9\linewidth]{figures/kalman-filter-monitoring-simu.pdf}
+    \end{figure}
+\end{frame}
+
+\begin{frame}{Kalman Filter (AHDC case)}
+    \begin{itemize}
+        \item For the AHDC, the state vector is $\bm{x} = (x, y, z, p_x, p_y, p_z)^T$
+        \item The measurements are
+            \begin{itemize}
+                \item the distances provided by the hits belonging to a given track, here $z = d$ is $1\times1$ matrix
+                \item the position with respect to the beamline, here $\bm{z} = (r, \phi, z)^T$ is a $3\times1$ matrix
+            \end{itemize}
+        \item The evolution model is the one of a particle moving in an electromagnetic field
+        \vspace{0.5cm}
+        \item The first implementation of the algorithm has been done by Mathieu Ouillon and Éric Fuchey
+        \item My contributions: cleaning, reorganization, new features
+    \end{itemize}
+    
+\end{frame}
+
+\begin{frame}{Kalman Filter (new features)}
+    \begin{enumerate}
+        \item \textbf{Use all hits} (before the code didn't manage more than one hit on the same layer)
+            \begin{itemize}
+                \item[$\circ$] the effect is more visible in simulation
+                \item[$\circ$] a good part of the peak at 0 in figure (a) is due all the hits that are not used
+                \item[$\circ$] looking at (b), almost 6.8 \% of the information was missing
+            \end{itemize}
+    \end{enumerate}
+    \begin{figure}
+        \centering
+        \begin{subfigure}{0.45\textwidth}
+            \includegraphics[width=\linewidth]{figures/residual_before_use_all_hits_residual.pdf}
+            \caption{before}
+        \end{subfigure}
+        \begin{subfigure}{0.45\textwidth}
+            \includegraphics[width=\linewidth]{figures/residual_after_use_all_hits_residual.pdf}
+            \caption{after}
+        \end{subfigure}
+    \end{figure}
+    
+\end{frame}
+
+\begin{frame}{Kalman Filter (new features)}
+    \begin{enumerate}
+        \item[2.] \textbf{Implement the electron vertex}
+            \begin{itemize}
+                \item[$\circ$] read electron vertex from CLAS12 reconstruction
+                \item[$\circ$] set it to the track with a finite resolution
+                \item[$\circ$] this resolution will depend on the momentum $p_e$ and the $\theta_e$ angle of the electron (\alert{a fine-tuning will be done later}) 
+                \item[$\circ$] handle a possible misalignment between the center of CLAS and ALERT
+            \end{itemize}
+        \item[3.] \textbf{Make the distance resolution dependent on the time and on the amplitude}
+            \begin{itemize}
+                \item[$\circ$] \alert{a fine-tuning will be done later}
+            \end{itemize}
+        \item[4.] \alert{(Ongoing work)} \textbf{Make the Kalman Filter reusable}
+            \begin{itemize}
+                \item[$\circ$] e.g. \textbf{KF 1} $\rightarrow$ clean bad hits $\rightarrow$ \textbf{KF 2}
+            \end{itemize}
+        \item[5.] \alert{(Next step)} Add the ATOF hit in the Kalman Filter
+    \end{enumerate}
+    
+\end{frame}
+
+\begin{frame}{Reconstruction status}
+    \begin{itemize}
+        \item Run 22712 on D2 target, 2.23951 GeV beam energy
+        \item Elastic cuts: $3.5 \mbox{ GeV}^2< W^2 < 3.8 \mbox{ GeV}^2$ and $\Delta \phi < 20^\circ$
+        \item Deposited energy dEdx versus momentum p of the track (after the Kalman filter)
+    \end{itemize}
+    \begin{figure}
+        \centering
+        \includegraphics[width=0.75\linewidth]{figures/recon-status-v85-dEdx-versus-momentum.pdf}
+    \end{figure}
+\end{frame}
+
+\begin{frame}{Conclusion}
+    \begin{itemize}
+        \item A lot of software development
+        \item ...
+        \item (After the presentation), points non abordés : time2distance, geometry modification, Nombre d'itérations et computing time du Kalman réduit en améliorant le Propagator...
+    \end{itemize}
+    
+\end{frame}
+
+\section{Backup}
+\begin{frame}{Backup slides}
+    \begin{figure}
+        \centering
+        \begin{subfigure}{0.48\textwidth}
+            \includegraphics[width=\linewidth]{figures/recon-status-v85-missing-mass.pdf}
+            \caption{Missing mass}
+        \end{subfigure}
+        \begin{subfigure}{0.48\textwidth}
+            \includegraphics[width=\linewidth]{figures/recon-status-v85-delta-phi.pdf}
+            \caption{Delta Phi}
+        \end{subfigure}
+    \end{figure}
+\end{frame}
+
+\begin{frame}{Calibration (time2distance)}
+    \begin{itemize}
+        \item Haha
+    \end{itemize}
+    \begin{figure}
+        \centering
+        \begin{subfigure}{0.32\textwidth}
+            \includegraphics[width=\linewidth]{figures/residual_pre_time2distance_calib.pdf}
+        \end{subfigure}
+        \begin{subfigure}{0.32\textwidth}
+            \includegraphics[width=\linewidth]{figures/time2distance.pdf}
+        \end{subfigure}
+        \begin{subfigure}{0.32\textwidth}
+            \includegraphics[width=\linewidth]{figures/residual_post_time2distance_calib.pdf}
+        \end{subfigure}
+    \end{figure}
+    
+\end{frame}
+
+% \begin{frame}{Updates}
+%     \begin{itemize}
+%     \item For now, moving the Kalman Filter in ALERTEngine has no effect on the result but:
+%         \begin{itemize}
+%             \item the new implementation allows us to use it several times
+%             \item example:  \textbf{KF 1 $\rightarrow$ clean bad hits $\rightarrow$ KF 2}
+%         \end{itemize}
+%     \item Also, it was a mistake at the beginning, but now these quantities can be filled independently (the values for the Helix fitter are empty.)
+%     \end{itemize}
+%     \begin{figure}
+%         \centering
+%         \begin{subfigure}{0.3\textwidth}
+%             \begin{tikzpicture}
+%                 % Image de fond
+%                 \node[anchor=south west] (img) at (0,0) {\includegraphics[width=\linewidth]{figures/trackBank.png}};
+%                 % Coordonnées normalisées 0–1
+%                 \begin{scope}[x={(img.south east)}, y={(img.north west)}]
+%                     \draw[red, ultra thick] (0.05,0.05) rectangle (0.7, 0.48);
+%                     %\node[blue] at (0.6,0.55) {Point important};
+%                 \end{scope}
+%             \end{tikzpicture}
+%         \end{subfigure}
+%         \hspace{0.01\textwidth}
+%         \begin{subfigure}{0.3\textwidth}
+%             \begin{tikzpicture}
+%                 % Image de fond
+%                 \node[anchor=south west] (img) at (0,0) {\includegraphics[width=\linewidth]{figures/kftrackBank.png}};
+%                 % Coordonnées normalisées 0–1
+%                 \begin{scope}[x={(img.south east)}, y={(img.north west)}]
+%                     \draw[red, ultra thick] (0.05,0.05) rectangle (0.7, 0.43);
+%                     %\node[blue] at (0.6,0.55) {Point important};
+%                 \end{scope}
+%             \end{tikzpicture}
+%         \end{subfigure}
+%     \end{figure}
+% \end{frame}
+
+
+% \begin{frame}{Reconstruction status}
+%     \begin{itemize}
+%         \item Run 22712 on D2 target, 2.23951 GeV beam energy
+%         \item Elastic cuts: $3.4 \mbox{ GeV}^2< W^2 < 3.9 \mbox{ GeV}^2$ and $\Delta \phi < 45^\circ$
+%         \item Deposited energy dEdx versus momentum p of the track (after the Kalman filter)
+%     \end{itemize}
+%     \begin{figure}
+%         \centering
+%         \includegraphics[width=0.6\linewidth]{figures/recon-status.pdf}
+%     %\caption{}
+%     \end{figure}
+% \end{frame}
+
+\end{document}
+
+
