@@ -36,8 +36,8 @@
     \begin{itemize}
         \item Cleaning of bad hits
         \begin{itemize}
-            \item After a first use the Kalman Filter, we remove all hits with $\bm{|\mbox{residual}| > 1.5 \mbox{ mm}}$
-            \item Then we rerun the Kalman Filter with 15 iterations
+            \item Made the Kalman Filter reusable (e.g error matrixes are saved from one use to another)
+            \item Feature: we run KF once, then we remove all hits with $\bm{|\mbox{residual}| > 1.5 \mbox{ mm}}$, and finally we rerun the KF with 15 iterations
             \item \alert{The standard deviation is better}
         \end{itemize}
     \end{itemize}
