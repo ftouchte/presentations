@@ -1,0 +1,94 @@
+\documentclass[aspectratio=169]{beamer}
+
+\usepackage{tikz}
+\usepackage{xcolor}
+\usepackage{caption}
+\usepackage{subcaption}
+\usepackage{bm}
+
+\usetheme{MyStyle}   % loads beamerthemeMyStyle.sty
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\title{ALERT meeting - Kalman Filter \\ updates}
+%\title{My Presentation Title}
+\author{Felix Touchte Codjo}
+\institute{IJCLab}
+\date{\today}
+
+
+\begin{document}
+
+\begin{frame}[plain] % remove header, footer, barre de navigation
+\titlepage
+\end{frame}
+
+%\begin{frame}{Outline}
+%\tableofcontents
+%\end{frame}
+
+%\section{Intro}
+
+\begin{frame}{Updates}
+    \begin{itemize}
+        \item Cleaning of bad hits
+        \begin{itemize}
+            \item After a first use the Kalman Filter, we remove all hits with $\bm{|\mbox{residual}| > 1.5 \mbox{ mm}}$
+            \item Then we rerun the Kalman Filter with 15 iterations
+            \item \alert{The standard deviation is better}
+        \end{itemize}
+    \end{itemize}
+    \begin{figure}
+        \begin{subfigure}{0.45\textwidth}
+            \includegraphics[width=\linewidth]{figures/residual-before-hit-cleaning.pdf}
+        \end{subfigure}
+        \hspace{0.01\textwidth}
+        \begin{subfigure}{0.45\textwidth}
+            \includegraphics[width=\linewidth]{figures/residual-after-hit-cleaning.pdf}
+        \end{subfigure}
+    \end{figure}
+\end{frame}
+
+% \begin{frame}{Updates}
+%     \begin{itemize}
+%     \item For now, moving the Kalman Filter in ALERTEngine has no effect on the result but:
+%         \begin{itemize}
+%             \item the new implementation allows us to use it several times
+%             \item example:  \textbf{KF 1 $\rightarrow$ clean bad hits $\rightarrow$ KF 2}
+%         \end{itemize}
+%     \item Also, it was a mistake at the beginning, but now these quantities can be filled independently (the values for the Helix fitter are empty.)
+%     \end{itemize}
+%     \begin{figure}
+%         \centering
+%         \begin{subfigure}{0.3\textwidth}
+%             \begin{tikzpicture}
+%                 % Image de fond
+%                 \node[anchor=south west] (img) at (0,0) {\includegraphics[width=\linewidth]{figures/trackBank.png}};
+%                 % Coordonnées normalisées 0–1
+%                 \begin{scope}[x={(img.south east)}, y={(img.north west)}]
+%                     \draw[red, ultra thick] (0.05,0.05) rectangle (0.7, 0.48);
+%                     %\node[blue] at (0.6,0.55) {Point important};
+%                 \end{scope}
+%             \end{tikzpicture}
+%         \end{subfigure}
+%         \hspace{0.01\textwidth}
+%         \begin{subfigure}{0.3\textwidth}
+%             \begin{tikzpicture}
+%                 % Image de fond
+%                 \node[anchor=south west] (img) at (0,0) {\includegraphics[width=\linewidth]{figures/kftrackBank.png}};
+%                 % Coordonnées normalisées 0–1
+%                 \begin{scope}[x={(img.south east)}, y={(img.north west)}]
+%                     \draw[red, ultra thick] (0.05,0.05) rectangle (0.7, 0.43);
+%                     %\node[blue] at (0.6,0.55) {Point important};
+%                 \end{scope}
+%             \end{tikzpicture}
+%         \end{subfigure}
+%     \end{figure}
+% \end{frame}
+
+\end{document}
+
+
