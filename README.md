@@ -19,3 +19,5 @@ You can change the length/width of the title box (in slide 1), by modifying `inn
     ] {{\usebeamerfont{title}\color{TextColorBlue}\inserttitle\par}};
 \end{tikzpicture}
 ```
+
+Some figures are built in `tikz` (cf. `figures/*.tex`), they need to be compiled indenpendently.
