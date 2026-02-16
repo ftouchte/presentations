@@ -36,7 +36,7 @@
     \begin{itemize}
         \item Cleaning of bad hits
         \begin{itemize}
-            \item Made the Kalman Filter reusable (e.g error matrixes are saved from one use to another)
+            \item Made the Kalman Filter reusable (e.g the error matrixes are saved from one use to another)
             \item Feature: we run KF once, then we remove all hits with $\bm{|\mbox{residual}| > 1.5 \mbox{ mm}}$, and finally we rerun the KF with 15 iterations
             \item \alert{The standard deviation is better}
         \end{itemize}
@@ -44,11 +44,66 @@
     \begin{figure}
         \begin{subfigure}{0.45\textwidth}
             \includegraphics[width=\linewidth]{figures/residual-before-hit-cleaning.pdf}
+            \caption{before}
         \end{subfigure}
         \hspace{0.01\textwidth}
         \begin{subfigure}{0.45\textwidth}
             \includegraphics[width=\linewidth]{figures/residual-after-hit-cleaning.pdf}
+            \caption{after}
         \end{subfigure}
+    \end{figure}
+\end{frame}
+
+\begin{frame}{Ongoing work - ATOF hits}
+    \begin{itemize}
+        \item Include the ATOF hit in the Kalman Filter
+            \begin{itemize}
+                \item Use \textbf{ALERT::ai:projections} \texttt{\{trakid, matched\_atof\_hit\_id\}}
+                \item nb of matched wegdes / nb of tracks = $\bm{20.94 \%}$
+                    \begin{itemize}
+                        \item[$\rightarrow$] nb bars with the same layer id = $\bm{10 \%}$
+                        \item[$\rightarrow$] nb bars with the same layer id or $\pm 1$ = $\bm{20.53 \%}$
+                    \end{itemize}
+            \end{itemize}
+        \item I already have a first implementation in coatjava
+            \begin{itemize}
+                \item But, I still need reasonable estimations of the resolution in $z$, $r$, $\phi$
+                \item Any clue?
+                \item $\delta r^2 \rightarrow$  (9 mm$^2$), $\delta \phi^2 \rightarrow$  (9 deg$^2$), $\delta z^2 \rightarrow$ ?
+            \end{itemize}
+    \end{itemize}
+\end{frame}
+
+% \begin{frame}{Ongoing work - ATOF hits}
+%     \begin{itemize}
+%         \item Question on the z resolution of the ATOF bar?
+%         \begin{figure}
+%             \centering
+%             \begin{subfigure}{0.3\textwidth}
+%                 \includegraphics[width=\linewidth]{figures/mcParticle.png}
+%                 \caption{MC::Particle}
+%             \end{subfigure}
+%             \begin{subfigure}{0.3\textwidth}
+%                 \includegraphics[width=\linewidth]{figures/atofHits.png}
+%                 \caption{ATOF::hits}
+%             \end{subfigure}
+%             \begin{subfigure}{0.3\textwidth}
+%                 \includegraphics[width=\linewidth]{figures/kfTrack.png}
+%                 \caption{AHDC::kftrack}
+%             \end{subfigure}
+%         \end{figure}
+%     \end{itemize}
+% \end{frame}
+
+\begin{frame}{Reconstruction status}
+    \begin{itemize}
+        \item dEdx verus p, run 22712 on D2
+        \item Elastic cuts: $3.5 \mbox{ GeV}^2 < W^2 < 3.8 \mbox{ GeV}^2$, $|\Delta \phi| < 20^\circ$, $\mbox{nhits} \geq 6$
+        \item Hit cleaning included (work on the ATOF hit not included)
+    \end{itemize}
+    \begin{figure}
+        \centering
+        \includegraphics[width=0.8\linewidth]{figures/recon-status-dEdx-versus-momentum.pdf}
     \end{figure}
 \end{frame}
 
