@@ -1,0 +1,130 @@
+\documentclass[aspectratio=169]{beamer}
+
+\usepackage{tikz}
+\usepackage{xcolor}
+\usepackage{caption}
+\usepackage{subcaption}
+\usepackage{bm}
+
+\usetheme{MyStyle}   % loads beamerthemeMyStyle.sty
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\title{ALERT meeting - Kalman Filter \\ updates}
+%\title{My Presentation Title}
+\author{Felix Touchte Codjo}
+\institute{IJCLab}
+\date{\today}
+
+
+\begin{document}
+
+\begin{frame}[plain] % remove header, footer, barre de navigation
+\titlepage
+\end{frame}
+
+%\begin{frame}{Outline}
+%\tableofcontents
+%\end{frame}
+
+%\section{Intro}
+
+\begin{frame}{Updates (ongoing work)}
+    \begin{itemize}
+        \item \textbf{Adding the ATOF hit in the Kalman Filter}
+            \begin{itemize}
+                \item Use \textbf{ALERT::ai:projections} \texttt{\{trakid, matched\_atof\_hit\_id\}}
+                    \begin{itemize}
+                        \item[$\rightarrow$] nb. of matches (elastic events): $30 \%$
+                    \end{itemize}
+                \item Cannot use \textbf{ATOF bars} due to the bad resolution in $\bm{z}$ 
+                    \begin{itemize}
+                        \item[$\rightarrow$] the bars were deduced using the same layer id as the wedge or $\pm 1$
+                    \end{itemize}
+                \item The current implementation use the \textbf{ATOF wedges}
+            \end{itemize}
+    \end{itemize}
+\end{frame}
+
+\begin{frame}{Updates (ongoing work)}
+    \begin{itemize}
+        \item The Wedge resolution is better than the Bar resolution (elastic events)
+    \end{itemize}
+    \begin{figure}
+        \centering
+        \begin{subfigure}{0.4\textwidth}
+            \includegraphics[width=\linewidth]{figures/corr_atof_wedge_vz.pdf}
+        \end{subfigure}
+        \begin{subfigure}{0.4\textwidth}
+            \includegraphics[width=\linewidth]{figures/corr_atof_bar_vz.pdf}
+        \end{subfigure}
+
+        \vspace{0.01\textwidth}
+
+        \begin{subfigure}{0.4\textwidth}
+            \includegraphics[width=\linewidth]{figures/diff_atof_wedge_vz.pdf}
+        \end{subfigure}
+        \begin{subfigure}{0.4\textwidth}
+            \includegraphics[width=\linewidth]{figures/diff_atof_bar_vz.pdf}
+        \end{subfigure}
+    \end{figure}
+\end{frame}
+
+\begin{frame}{Updates (ongoing work)}
+    \begin{itemize}
+        \item We have a misalignment between ATOF and AHDC
+        \item We have an improvement in the theta reconstruction of elastics
+    \end{itemize}
+    \begin{figure}
+        \centering
+        \begin{subfigure}{0.45\textwidth}
+            \includegraphics[width=\linewidth]{figures/theta_atof_wedge_notapplied.pdf}
+            \caption{before : ATOF wedge not applied}
+        \end{subfigure}
+        \begin{subfigure}{0.45\textwidth}
+            \includegraphics[width=\linewidth]{figures/theta_atof_wedge_applied.pdf}
+            \caption{after : ATOF wedge applied}
+        \end{subfigure}
+    \end{figure}
+\end{frame}
+
+\begin{frame}{Updates (ongoing work)}
+    \begin{itemize}
+        \item No significant changes have been observed on the residual, $\Delta v_z$ and $\Delta \phi$
+        \item Next steps:
+            \begin{enumerate}
+                \item Use the Kalman Filter to predict ATOF hits (wedges)
+                    \begin{itemize}
+                        \item[$\rightarrow$] After a first KF fit, project the track on the surface of the ATOF and check new hits
+                    \end{itemize}
+                \item Check that the PID is correctly used by the Kalman Filter
+            \end{enumerate}
+    \end{itemize}
+\end{frame}
+
+\begin{frame}{Backup slides}
+    \begin{itemize}
+        \item Not presented during the meeting but useful to see the shift between AHDC and ATOF
+        \item \alert{Confusion in the notation: $\Delta \mbox{vz}^{\tiny \mbox{(ATOF wedge)}}$ is not exactly the vertex but the z position of the wedge. I should have made the projection before computing the difference. However, the projection should only explain 5 \% of the shift.}
+    \end{itemize}
+    \begin{figure}
+        \centering
+        \begin{subfigure}{0.45\textwidth}
+            \includegraphics[width=\linewidth]{figures/delta_vz_ahdc.pdf}
+            \caption{AHDC}
+        \end{subfigure}
+        \begin{subfigure}{0.45\textwidth}
+            \includegraphics[width=\linewidth]{figures/diff_atof_wedge_vz.pdf}
+            \caption{ATOF}
+        \end{subfigure}
+    \end{figure}
+\end{frame}
+
+
+
+\end{document}
+
+

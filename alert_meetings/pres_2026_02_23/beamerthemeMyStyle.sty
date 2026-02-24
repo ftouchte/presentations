@@ -1,0 +1,175 @@
+\ProvidesPackage{beamerthemeMyStyle}
+
+%%%%%%%%%%%%%%%%%%%%%%
+% Color definition
+%%%%%%%%%%%%%%%%%%%%%%
+%\definecolor{TextColorBlue}{RGB}{20, 30, 120}
+%\definecolor{BgColorBlue}{RGB}{150, 184, 235}
+\definecolor{TextColorBlue}{RGB}{20, 30, 120}
+\definecolor{BgColorBlue}{RGB}{122, 91, 247}
+\definecolor{Accent}{RGB}{200, 40, 40}
+\definecolor{LightGray}{RGB}{245,245,245}
+
+%%%%%%%%%%%%%%%%%%%%%%
+% Color style
+%%%%%%%%%%%%%%%%%%%%%%
+\setbeamercolor{background canvas}{bg=white}
+\setbeamercolor{normal text}{fg=black}
+\setbeamercolor{frametitle}{fg=TextColorBlue}
+\setbeamercolor{title}{fg=TextColorBlue}
+\setbeamercolor{structure}{fg=TextColorBlue}
+\setbeamercolor{alerted text}{fg=Accent}
+
+%%%%%%%%%%%%%%%%%%%%%%
+% Font style
+%%%%%%%%%%%%%%%%%%%%%%
+\usefonttheme{professionalfonts}
+\usepackage{lmodern} % nicer font
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Set minimal navigation
+%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\setbeamertemplate{navigation symbols}{}   % removes icons
+\setbeamertemplate{footline}{}             % remove default footer
+\setbeamertemplate{headline}{}             % remove top bar
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Custom itemize style
+%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\setbeamertemplate{itemize item}{\color{TextColorBlue}$\blacktriangleright$}
+\setbeamertemplate{itemize subitem}{$\circ$}
+%\setbeamertemplate{itemize subitem}{\color{Accent}$\circ$}
+%\setbeamertemplate{itemize subsubitem}{--} 
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Block styles (for the “boxed content”)
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\setbeamercolor{block title}{bg=BgColorBlue, fg=white}
+\setbeamercolor{block body}{bg=LightGray, fg=black}
+
+\setbeamercolor{block title alerted}{bg=Accent, fg=white}
+\setbeamercolor{block body alerted}{bg=LightGray, fg=black}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Title slide design (first slide)
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\setbeamertemplate{title page}{
+  
+  % ---------- Background ----------
+  \begin{tikzpicture}[remember picture,overlay]
+    %\fill[color=BgColorBlue!80] (current page.north west) rectangle 
+    %                 (current page.south east);
+    \shade[inner color=BgColorBlue!20, outer color=BgColorBlue!80] (current page.north west) rectangle 
+                     (current page.south east);
+  \end{tikzpicture}
+
+  % ------------ Logo -------------
+  \begin{tikzpicture}[remember picture,overlay]
+    \node[anchor=north west, xshift=1cm, yshift=-0.5cm]
+      at (current page.north west)
+      {
+        \begin{minipage}{5cm}
+          \centering
+          \includegraphics[height=1.4cm]{logos/logo-paris-saclay.png}
+        \end{minipage}
+      };
+      \node[anchor=north east, xshift=-0.5cm, yshift=-0.3cm]
+      at (current page.north east)
+      {
+        \begin{minipage}{5cm}
+          \centering
+          \includegraphics[height=2cm]{logos/logo-ijclab-fond-blanc.png}
+        \end{minipage}
+      };
+  \end{tikzpicture}
+
+  \begin{center}
+    \vspace{1.1cm}
+
+    % ---------- Title ----------
+    \begin{tikzpicture}[remember picture,overlay]
+        \node at (current page.center) [
+            draw=TextColorBlue,
+            rounded corners=8pt,
+            fill=white,
+            inner sep=10pt,
+            text width=0.55\paperwidth,
+            align=center
+        ] {{\usebeamerfont{title}\color{TextColorBlue}\inserttitle\par}};
+    \end{tikzpicture}
+    
+
+    % ---------- Horizontal rule ----------
+    %\vspace{0.3cm}
+    %\color{white}\rule{0.6\linewidth}{0.6pt}
+    %\vspace{0.3cm}
+
+    % ---------- Subtitle ----------
+    %{\usebeamerfont{subtitle}\color{white}\insertsubtitle\par}
+
+    \vspace{3cm}
+
+    % ---------- Author & Institute ----------
+    {\large\color{TextColorBlue}\insertauthor\par}
+    \vspace{0.2cm}
+    {\color{TextColorBlue}\insertinstitute\par}
+
+    \vfill
+
+    % ---------- Date ----------
+    {\color{TextColorBlue}\insertdate\par}
+  \end{center}
+
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Slide header template
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\setbeamertemplate{frametitle}{} % désactiver le titre par défaut pour pouvoir l'inclure dans le header
+\setbeamertemplate{headline}{
+\ifnum\value{framenumber}>1
+  \leavevmode
+  \begin{tikzpicture}[remember picture,overlay]
+    \shade[left color=BgColorBlue!80, right color=BgColorBlue!20]
+      (current page.north west) rectangle ([yshift=-\dimexpr0.8cm+2ex\relax] current page.north east);
+  \end{tikzpicture}
+    \begin{beamercolorbox}[wd=\paperwidth,ht=0.8cm,dp=2ex]{headline}
+      \hspace{1em}
+      %\insertsection
+      {\color{TextColorBlue} \usebeamerfont{frametitle}\insertshortframetitle}
+      \hfill
+      \includegraphics[height=0.7cm]{logos/logo-paris-saclay.png}
+      \hspace{0.4cm}
+      \includegraphics[height=0.7cm]{logos/logo-ijclab-fond-blanc.png}
+      \hspace{1em}
+    \end{beamercolorbox}
+\fi
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Custom footer
+%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\setbeamertemplate{footline}{
+  \leavevmode%
+  \begin{tikzpicture}[remember picture,overlay]
+    \shade[left color=BgColorBlue!20, right color=BgColorBlue!80]
+      (current page.south west) rectangle ([yshift=+\dimexpr2.5ex+1ex\relax] current page.south east);
+  \end{tikzpicture}
+  \hbox{%
+    \begin{beamercolorbox}[wd=.25\paperwidth,ht=2.5ex,dp=1ex,left]{author in head/foot}%
+      \hspace{1em}\insertdate% Date
+    \end{beamercolorbox}%
+    \begin{beamercolorbox}[wd=.25\paperwidth,ht=2.5ex,dp=1ex,center]{author in head/foot}%
+      \hspace{1em}Felix Touchte Codjo% My Name
+    \end{beamercolorbox}%
+    \begin{beamercolorbox}[wd=.25\paperwidth,ht=2.5ex,dp=1ex,center]{author in head/foot}%
+      \hspace{1em}ALERT meeting% Presentation name or shot name
+    \end{beamercolorbox}%
+    \begin{beamercolorbox}[wd=.25\paperwidth,ht=2.5ex,dp=1ex,right]{author in head/foot}%
+      \insertframenumber/\inserttotalframenumber\hspace{1em} % slide number
+    \end{beamercolorbox}%
+  }
+}
+
