@@ -1,0 +1,22 @@
+\documentclass[tikz,border=2pt]{standalone}
+\usetikzlibrary{calc}
+\usetikzlibrary{intersections}
+\usetikzlibrary{patterns}
+\usepackage{bm}
+
+\begin{document}
+
+\begin{tikzpicture}%[very thin]
+    
+    \filldraw [fill = gray!60] (0,0) circle [radius=2pt];
+    %\filldraw [pattern color=gray!70, draw=black, pattern=north east lines] (0,0) circle [radius=2pt];
+    \draw[->] (3pt,0) -- (3,0) node [below] {\small vertex};
+    \draw (-3pt,0) -- (-3,0);
+
+    \draw [->] (60:3pt) -- (60:2) node [above] {\small e};
+    \draw [->] ({60+180}:3pt) -- ({60+180}:2) node [below] {\small p};
+
+\end{tikzpicture}
+
+
+\end{document}
