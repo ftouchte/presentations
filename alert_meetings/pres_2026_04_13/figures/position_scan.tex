@@ -1,0 +1,36 @@
+\documentclass[tikz,border=2pt]{standalone}
+\usetikzlibrary{calc}
+\usetikzlibrary{intersections}
+\usetikzlibrary{patterns}
+\usepackage{bm}
+\usetikzlibrary{positioning}
+\usetikzlibrary{shapes}
+
+\begin{document}
+
+\begin{tikzpicture}%[rotate=-10, very thick]
+    
+    % % Draw axis
+    % \draw[->] (-8,0) -- (2,0) node [below] {vz (mm)};
+
+    \coordinate (A) at (0,0);
+    \node at (A) {CLAS};
+    \node [left=3cm of A] (B) {Solenoid};
+    \node [left=4cm of B] (C) {AHDC (?)};
+
+    % Draw axis
+    \draw[->] (C |- 0,-1) -- (A |- 0,-1) -- ++(2,0);
+    \draw (C |- 0,-1) -- ++(-2,0);
+
+    % Draw sticks
+    \draw (C |- 0,-1) -- ++(0, 3pt);
+    \draw (C |- 0,-1) -- ++(0, -3pt) node [below, yshift=-0.5cm] {-70};
+    \draw (B |- 0,-1) -- ++(0, 3pt);
+    \draw (B |- 0,-1) -- ++(0, -3pt) node [below, yshift=-0.5cm] {-30};
+    \draw (A |- 0,-1) -- ++(0, 3pt);
+    \draw (A |- 0,-1) -- ++(0, -3pt) node [below, yshift=-0.5cm] {0} node [below, yshift=-0.5cm, xshift=2cm] {vz (mm)};
+
+\end{tikzpicture}
+
+
+\end{document}
