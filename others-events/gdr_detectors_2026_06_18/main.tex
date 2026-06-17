@@ -231,7 +231,7 @@
 \begin{frame}{Track Finder}
     \begin{itemize}
         \item Clustering problem: find which collection of hits belong to a track
-        \item Machine Learning approaches \footnote{Work by Mathieu Ouillon, see \href{https://indico.in2p3.fr/event/36031/contributions/157186/attachments/93301/142810/AG_GDR_061825.pdf}{GDR 2025}} based on MultiLayer Perceptron and Graph Neural Network are currently used
+        \item Machine Learning approaches \footnote{Work by Mathieu Ouillon, see \href{https://indico.in2p3.fr/event/36031/contributions/157186/attachments/93301/142810/AG_GDR_061825.pdf}{GDR DI2I 2025}} based on MultiLayer Perceptron and Graph Neural Network are currently used
         \item The ML infrastructure
             \begin{itemize}
                 \item Inputs : X,Y coordinates of a set of hits
@@ -253,35 +253,66 @@
 
 \begin{frame}{Kalman Filter}
     \begin{itemize}
-        \item ...
+        \item We use the Kalman Filter to reconstruct the initial position and the momentum of the particle $\bm{x} = (x, y, z, p_x, p_y, p_z)^T$
+            \begin{itemize}
+                \item Prediction :  propagate the track towards the next AHDC hit
+                \item Correction :  compute the residual and correct the estimation vector $\bm{\hat{x}}$
+            \end{itemize}
+        \item We already have good results whereas fine-tunings remain to be done:
+            \begin{itemize}
+                \item Good initialization of the error covariance matrix
+                \item Precise process and measurement noises
+                \item Number of iterations and computing time
+            \end{itemize}
     \end{itemize}
 
     \centering
     \vspace{0.2cm}
 
-    %Waveform types to be added
+    \begin{tabular}{ll}
+        \includegraphics[width=0.65\linewidth]{figures/kalman-filter-iterations-position.png} & \includegraphics[width=0.3\linewidth]{figures/residual_illustration.pdf}
+    \end{tabular}
+    
 \end{frame}
 
 \begin{frame}{AHDC resolution}
     \begin{itemize}
-        \item Residuals
+        \item The distribution of residuals \footnote{The fit is made with a Crystal Ball distribution, the width is the $\sigma$ parameter of the Gaussian part} gives an overall indication of the quality of our tracking reconstruction
+        \item The integrated resolution is about 336 µm
+        \item However, some layer have a better resolution! E.g. layer 42 has 261 µm
+        \item This difference between layer is symptomatic of an unfinished calibration
     \end{itemize}
 
     \centering
     \vspace{0.2cm}
 
-    \includegraphics[width=0.7\linewidth]{figures/residual_normal_iter_1.pdf}
+   { \setlength{\tabcolsep}{1pt}
+        \begin{tabular}{ccc}
+            \includegraphics[width=0.32\linewidth]{figures/residual_all_layers.png} &
+                \includegraphics[width=0.32\linewidth]{figures/residual_L11.png} &
+                    \includegraphics[width=0.32\linewidth]{figures/residual_L42.png} 
+        \end{tabular}
+    }
 \end{frame}
 
-\begin{frame}{AHDC resolution}
+\begin{frame}{Time2distance calibration}
     \begin{itemize}
-        \item Time2distance
+        \item Ongoing work on the time2distance calibration is being done to improve the overall resolution of the detector
+        \item Easy fix : use different T2D for each layer
+        \item 
     \end{itemize}
 
     \centering
     \vspace{0.2cm}
 
-    \includegraphics[width=0.7\linewidth]{figures/time2distance_iter_1_after_as_limitation.pdf}
+    %\includegraphics[width=0.7\linewidth]{figures/time2distance_iter_1_after_as_limitation.pdf}
+    { \setlength{\tabcolsep}{1pt}
+        \begin{tabular}{ccc}
+            \includegraphics[width=0.32\linewidth]{figures/time2distance_all_alyers.png} &
+                \includegraphics[width=0.32\linewidth]{figures/time2distance_L11.png} &
+                    \includegraphics[width=0.32\linewidth]{figures/time2distance_L42.png} 
+        \end{tabular}
+    }
 \end{frame}
 
 \begin{frame}{Particle identification}
