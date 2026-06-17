@@ -230,13 +230,25 @@
 
 \begin{frame}{Track Finder}
     \begin{itemize}
-        \item ...
+        \item Clustering problem: find which collection of hits belong to a track
+        \item Machine Learning approaches \footnote{Work by Mathieu Ouillon, see \href{https://indico.in2p3.fr/event/36031/contributions/157186/attachments/93301/142810/AG_GDR_061825.pdf}{GDR 2025}} based on MultiLayer Perceptron and Graph Neural Network are currently used
+        \item The ML infrastructure
+            \begin{itemize}
+                \item Inputs : X,Y coordinates of a set of hits
+                \item Output : 0/1 (bad/good) track
+            \end{itemize}
+        \item The training is done on simulation
+        \item Performance on real data: 96\% efficiency and 90\% purity for a 0.2 threshold
+        %\item 
     \end{itemize}
 
     \centering
     \vspace{0.2cm}
 
-    %Waveform types to be added
+    \begin{tabular}{cc}
+        \includegraphics[width=4cm,height=3cm]{figures/multilayer-perceptron.png} &
+            \includegraphics[width=4cm,height=3cm]{figures/track-finder-efficiency-real-data.png}
+    \end{tabular}
 \end{frame}
 
 \begin{frame}{Kalman Filter}
