@@ -25,7 +25,7 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\title{Nuclear tomography with the ALERT detector at JLab}
+\title{The ALERT Drift Chamber \\at Jefferson Lab}
 \newcommand{\eventname}{Assemblée Générale du GDR DI2I}
 \author{Felix Touchte Codjo}
 \institute{IJCLab}
@@ -190,23 +190,45 @@
 
 \begin{frame}{Waveform classification}
     \begin{itemize}
-        \item Text
+        \item We consider that good hits have wfType $\leq 2$
     \end{itemize}
 
     \centering
     \vspace{0.2cm}
 
-    \begin{tabular}{ccc}
-        \includegraphics[width=0.3\linewidth]{figures/wfType6.pdf} & 
-            \includegraphics[width=0.3\linewidth]{figures/wfType5.pdf} & 
-                \includegraphics[width=0.3\linewidth]{figures/wfType4.pdf} \\
-        \includegraphics[width=0.3\linewidth]{figures/wfType3.pdf} & 
-            \includegraphics[width=0.3\linewidth]{figures/wfType2.pdf} & 
-                \includegraphics[width=0.3\linewidth]{figures/wfType1.pdf} \\
-    \end{tabular}
+    { \footnotesize
+        \begin{tabular}{ll} 
+            $\circ$ wfType 6 $\rightarrow$ too short (nsamples $\leq$ 10) & $\circ$ wfType 2 $\rightarrow$ bad
+    trailingEdgeTime \\
+            $\circ$ wfType 5 $\rightarrow$ decreasing baseline & $\circ$ wfType 1 $\rightarrow$ saturating\\
+            $\circ$ wfType 4 $\rightarrow$ bad ToT (ToT $<$ 300) & $\circ$ wfType 0 $\rightarrow$ OK\\
+            $\circ$ wfType 3 $\rightarrow$ pileup but classified as 2& \\
+        \end{tabular}
+    }
+
+    \begin{itemize}
+        \item The occupancy drops at 7 \% in the first layer 
+        \item Additional cuts based on the calibrated times are added before entering the Track Finder
+    \end{itemize}
+
+    \vspace{0.2cm}
+    
+    { \setlength{\tabcolsep}{1pt}
+        \begin{tabular}{llll}
+            \includegraphics[width=0.24\linewidth]{figures/wfType6.pdf} & 
+                \includegraphics[width=0.24\linewidth]{figures/wfType5.pdf} & 
+                    \includegraphics[width=0.24\linewidth]{figures/wfType4.pdf} &
+                        \includegraphics[width=0.24\linewidth]{figures/wfType3.pdf} \\  
+            \includegraphics[width=0.24\linewidth]{figures/wfType2.pdf} & 
+                \includegraphics[width=0.24\linewidth]{figures/wfType1.pdf} & 
+                    \includegraphics[width=0.24\linewidth]{figures/wfType0.pdf} & 
+                        \includegraphics[width=2.5cm,height=1.5cm]{figures/build/legend-wfType.pdf} \\
+        \end{tabular}
+    }
+    %Examples of waveforms with different waveform types 
 \end{frame}
 
-\begin{frame}{Track Finding}
+\begin{frame}{Track Finder}
     \begin{itemize}
         \item ...
     \end{itemize}
