@@ -295,15 +295,23 @@
     }
 \end{frame}
 
-\begin{frame}{Time2distance calibration}
+\begin{frame}{Calibration}
     \begin{itemize}
-        \item Ongoing work on the time2distance calibration is being done to improve the overall resolution of the detector
-        \item Easy fix : use different T2D for each layer
-        \item 
+        \item Active work on calibration is being done to improve the resolution
+        \item These plots show the time versus distance distribution
+        \item Remarks : the T2D vary considerably from one layer to another
+        \item Room for improvements:
+            \begin{itemize}
+                \item new iteration of $t_0$ calibration
+                \item T2D layer by layer; wire by wire
+            \end{itemize}
+        
+        %\footnote{It was not the case at the time these plots were made.}
+        %\item 
     \end{itemize}
 
     \centering
-    \vspace{0.2cm}
+    \vspace{0.5cm}
 
     %\includegraphics[width=0.7\linewidth]{figures/time2distance_iter_1_after_as_limitation.pdf}
     { \setlength{\tabcolsep}{1pt}
@@ -313,11 +321,13 @@
                     \includegraphics[width=0.32\linewidth]{figures/time2distance_L42.png} 
         \end{tabular}
     }
+
 \end{frame}
 
 \begin{frame}{Particle identification}
     \begin{itemize}
-        \item gggggfff
+        \item While the tracking algorithm and the calibration are not over, we are already able to identify particle with the AHDC
+        \item Better results are expected for ALERT as a whole by combining the information of the drift chamber with the time-of-flight
     \end{itemize}
 
     \centering
