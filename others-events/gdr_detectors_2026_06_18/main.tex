@@ -48,7 +48,7 @@
 
 \begin{frame}{The ALERT detector}
     \begin{itemize}
-        \item The ALERT experiment at Jefferson Lab
+        \item A requirement for a new physics program at Jefferson Lab
             \begin{itemize}
                 \item physics process of interest: $eN \rightarrow eX\gamma$
                 \item need to detect recoil fragments X : p, d, H$^3$, He$^3$, He$^4$
@@ -80,7 +80,7 @@
                 \item Total of 3026 wires, 576 are readouts with positive charge
                 %\item No guard wires (sense wire $\leftrightarrow$ HV, field wire $\leftrightarrow$ ground)
                 \item Superlayer structure : 3-5-5-5-3, resulting in 8 detection layers
-                \item It has stereo angles varying from 3.8$^\circ$ to 7.4$^\circ$ between superlayer for the vz reconstruction
+                \item It has stereo angles varying from 3.8$^\circ$ to 7.4$^\circ$ between superlayers for the vz reconstruction
             \end{itemize}
         \item Use the DREAM electronics developed at CEA
     \end{itemize}
@@ -95,6 +95,23 @@
     \end{tabular}
 \end{frame}
 
+\begin{frame}{Assembly and transport}
+    \begin{itemize}
+        \item Assembly time : 3 months (last wire mounted on March 1, 2024 \footnote{My first day at IJCLab})
+        \item AHDC fully assembled in IJCLab and transported to JLab by plane wihout any issue
+    \end{itemize}
+
+    \centering
+    \vspace{0.2cm}
+
+    %\includegraphics[width=0.4\linewidth]{figures/ahdc-during-assembly.png}
+    \begin{tabular}{cc}
+        \includegraphics[width=0.4\linewidth]{figures/ahdc-during-assembly.png} & 
+        %picture of the box in the plane
+        \includegraphics[width=0.48\linewidth]{figures/ahdc-mounted-with-atof.png}
+    \end{tabular}
+\end{frame}
+
 \begin{frame}{ALERT during the run period}
     \begin{itemize}
         %\item AHDC Assembly time : 3 months
@@ -105,50 +122,26 @@
     \end{itemize}
 
     \begin{center}
-        % \begin{minipage}{0.45\linewidth}
-        %     \begin{itemize}
-        %         \item[$\circ$] HV $\sim$ 1400-1500 V
-        %         \item[$\circ$] Event rate $\sim$ 10 kHz
-        %         \item[$\circ$] $6.42 \times 10^{10}$ trigger events collected
-        %     \end{itemize}
-        % \end{minipage}
-        % \begin{minipage}{0.45\linewidth}
-        %     \begin{itemize}
-        %         \item[$\circ$] beam current up to 325 nA
-        %         \item[$\circ$] nb. samples per WF : 20
-        %         \item[$\circ$] sampling window $\sim 1$ µs
-        %     \end{itemize}
-        % \end{minipage}
         \begin{tabular}{ll}
             $\circ$ HV $\sim$ 1400-1500 V & $\circ$ beam current up to 325 nA\\
             $\circ$ Event rate $\sim$ 10 kHz & $\circ$ nb. samples per WF : 20\\
             $\circ$ $6.42 \times 10^{10}$ trigger events collected & $\circ$ sampling window $\sim 1$ µs\\
         \end{tabular}
     \end{center}
+
+    \begin{itemize}
+        \item Ongoing work : software development and data calibration
+    \end{itemize}
     
 
     \centering
-    \vspace{0.5cm}
+    \vspace{0.3cm}
 
     \includegraphics[width=0.75\linewidth]{figures/accumluted-charges.png}
 
 \end{frame}
 
-\begin{frame}{Assembly and transport}
-    \begin{itemize}
-        \item Assembly time : 3 months (last wire mounted on March 1, 2024 \footnote{My first day at IJCLab})
-        \item Detector fully assembled in IJCLab and transported to JLab by plane wihout any issue
-    \end{itemize}
 
-    \centering
-    \vspace{0.2cm}
-
-    %\includegraphics[width=0.4\linewidth]{figures/ahdc-during-assembly.png}
-    \begin{tabular}{cc}
-        \includegraphics[width=0.4\linewidth]{figures/ahdc-during-assembly.png} & 
-        picture of the box in the plane
-    \end{tabular}
-\end{frame}
 
 \begin{frame}{Hit selection}
     \begin{itemize}
@@ -193,10 +186,8 @@
         \item We consider that good hits have wfType $\leq 2$
     \end{itemize}
 
-    \centering
-    \vspace{0.2cm}
-
-    { \footnotesize
+    \begin{center}
+        \footnotesize
         \begin{tabular}{ll} 
             $\circ$ wfType 6 $\rightarrow$ too short (nsamples $\leq$ 10) & $\circ$ wfType 2 $\rightarrow$ bad
     trailingEdgeTime \\
@@ -204,13 +195,14 @@
             $\circ$ wfType 4 $\rightarrow$ bad ToT (ToT $<$ 300) & $\circ$ wfType 0 $\rightarrow$ OK\\
             $\circ$ wfType 3 $\rightarrow$ pileup but classified as 2& \\
         \end{tabular}
-    }
+    \end{center}
 
     \begin{itemize}
         \item The occupancy drops at 7 \% in the first layer 
         \item Additional cuts based on the calibrated times are added before entering the Track Finder
     \end{itemize}
 
+    \centering
     \vspace{0.2cm}
     
     { \setlength{\tabcolsep}{1pt}
@@ -232,7 +224,7 @@
     \begin{itemize}
         \item Clustering problem: find which collection of hits belong to a track
         \item Machine Learning approaches \footnote{Work by Mathieu Ouillon, see \href{https://indico.in2p3.fr/event/36031/contributions/157186/attachments/93301/142810/AG_GDR_061825.pdf}{GDR DI2I 2025}} based on MultiLayer Perceptron and Graph Neural Network are currently used
-        \item The ML infrastructure
+        \item The MLP infrastructure
             \begin{itemize}
                 \item Inputs : X,Y coordinates of a set of hits
                 \item Output : 0/1 (bad/good) track
@@ -334,6 +326,16 @@
     \vspace{0.2cm}
 
     \includegraphics[width=0.7\linewidth]{figures/recon-status-dEdx-versus-momentum.pdf}
+\end{frame}
+
+\begin{frame}{Conclusion}
+    \begin{itemize}
+        \item The AHDC developed at IJCLab plays a central role in the realization of the ALERT physics program at Jefferson Lab 
+        \item The detector worked perfectly during the data taking
+        \item The development of the reconstruction software and the calibration of the data are ongoing
+        \item A primary particle identification is already possible while better results are expected by the end of the calibration
+        %\item 
+    \end{itemize}
 \end{frame}
 
 
