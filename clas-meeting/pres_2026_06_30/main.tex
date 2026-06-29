@@ -220,7 +220,9 @@
 
 \begin{frame}{Layer alignment with fit}
     \begin{itemize}
-        \item 
+        \item Corresponding distributions after alignment
+        \item Work already implemented in coatjava
+        \item Next step: wire by wire alignment
     \end{itemize}
 
     \vspace{0.3cm}
@@ -238,6 +240,78 @@
     \end{center}
 \end{frame}
 
+
+\begin{frame}{Other - AHDC wire swaps}
+    \begin{itemize}
+        \item Analyzing wire by wire distributions we found 4 couples of wire swaps
+        \item Distributions before (on the left) and after fix (on the right)
+    \end{itemize}
+
+    % \begin{center}
+    %     \begin{tabular}{ccc}
+    %         L21W18 & $\longleftrightarrow$ & L21W19 \\
+    %         L22W20 & $\longleftrightarrow$ & L22W22 \\
+    %         L22W42 & $\longleftrightarrow$ & L22W43 \\
+    %         L31W68 & $\longleftrightarrow$ & L32W68 \\
+    %     \end{tabular}
+    % \end{center}
+
+    \vspace{0.1cm}
+
+    \begin{center}
+        \setlength{\tabcolsep}{3pt}
+        \begin{tabular}{cc|cc}
+            \includegraphics[width=0.20\linewidth]{figures/L21W18_old_tt.pdf} & \includegraphics[width=0.20\linewidth]{figures/L21W19_old_tt.pdf} & \includegraphics[width=0.20\linewidth]{figures/L21W18_new_tt.pdf} & \includegraphics[width=0.20\linewidth]{figures/L21W19_new_tt.pdf} \\
+
+            \includegraphics[width=0.20\linewidth]{figures/L22W20_old_tt.pdf} & \includegraphics[width=0.20\linewidth]{figures/L22W22_old_tt.pdf} & \includegraphics[width=0.20\linewidth]{figures/L22W20_new_tt.pdf} & \includegraphics[width=0.20\linewidth]{figures/L22W22_new_tt.pdf} \\
+
+            \includegraphics[width=0.20\linewidth]{figures/L22W42_old_tt.pdf} & \includegraphics[width=0.20\linewidth]{figures/L22W43_old_tt.pdf} & \includegraphics[width=0.20\linewidth]{figures/L22W42_new_tt.pdf} & \includegraphics[width=0.20\linewidth]{figures/L22W43_new_tt.pdf} \\
+            
+            \includegraphics[width=0.20\linewidth]{figures/L31W68_old_tt.pdf} & \includegraphics[width=0.20\linewidth]{figures/L32W68_old_tt.pdf} & \includegraphics[width=0.20\linewidth]{figures/L31W68_new_tt.pdf} & \includegraphics[width=0.20\linewidth]{figures/L32W68_new_tt.pdf} \\
+        \end{tabular}
+    \end{center}
+    
+    
+
+\end{frame}
+
+\begin{frame}{Other - AHDC wire swaps}
+    \begin{itemize}
+        \item Swaps were also visible in the wire versus phi distributions for elastic events
+    \end{itemize}
+
+    \begin{figure}
+        \includegraphics[width=0.9\linewidth]{figures/wire_versus_phi_old_translation_table_annotated.pdf}
+    \end{figure}
+
+\end{frame}
+
+\begin{frame}{Other - AHDC wire swaps}
+    \begin{itemize}
+        \item  Wire versus phi distributions after fix
+    \end{itemize}
+
+    \begin{figure}
+        \includegraphics[width=0.9\linewidth]{figures/wire_versus_phi_new_translation_table.pdf}
+    \end{figure}
+
+\end{frame}
+
+\begin{frame}{Other - About tracking}
+    \begin{itemize}
+        \item $t_0$ and T2D calibration are ongoing, but we can already achieve good resolutions layer by layer, especially layer 41
+    \end{itemize}
+
+    \begin{figure}
+        \includegraphics[width=0.7\linewidth]{figures/residual_LR_iter_1.pdf}
+    \end{figure}
+\end{frame}
+
+\begin{frame}{Conclusion}
+    \begin{itemize}
+        \item 
+    \end{itemize}
+\end{frame}
 
 
 
