@@ -1,0 +1,69 @@
+\documentclass[tikz,border=2pt]{standalone}
+\usetikzlibrary{calc}
+\usetikzlibrary{intersections}
+\usetikzlibrary{patterns}
+\usepackage{bm}
+\usetikzlibrary{positioning}
+\usetikzlibrary{shapes}
+\usepackage{pgfplots}
+\pgfplotsset{compat=1.18}
+
+\begin{document}
+
+\begin{tikzpicture}%[rotate around z=10]
+    % \tikzset{
+    %     every node/.style={font=\scriptsize}
+    % }
+
+    % Constants
+    \pgfmathsetmacro{\R}{20}
+
+    % Draw layers
+    \draw [name path=arcA] (110:\R) arc[radius=\R, start angle=110, end angle=70];
+
+    \draw [name path=arcB] (110:0.75*\R) arc[radius=0.75*\R, start angle=110, end angle=70];
+
+    % Draw hits
+    \coordinate (A) at (95:\R);
+    \coordinate (B) at (85:0.75*\R);
+
+    \fill (A) circle [radius=2pt] node [above] {A};
+    \fill (B) circle [radius=2pt] node [above] {B};
+
+    \draw [name path=hitA] (A) circle [radius=1];
+    \draw [name path=hitB] (B) circle [radius=1];
+
+    \coordinate (C) at ($(A)!0.5!(B)$);
+
+    \draw [thick, blue!70!black, name path=lineA] (C) -- ++(90:6);
+    \draw [thick, blue!70!black, name path=lineB] (C) -- ++(-90:6);
+
+    \path[name intersections={of=arcA and hitA, sort by=droite, by={A1,A2}}];
+
+    \path[name intersections={of=arcB and hitB, sort by=droite, by={B1,B2}}];
+
+    \fill (A1) circle [radius=2pt] node [above] {A1};
+    \fill (A2) circle [radius=2pt] node [above] {A2};
+    \fill (B1) circle [radius=2pt] node [above] {B1};
+    \fill (B2) circle [radius=2pt] node [above] {B2};
+    \coordinate (A2) at ($(A)!0.5!(A1)$);
+
+
+    \fill [red] (A1) circle [radius=2pt];
+    \fill [red] (B1) circle [radius=2pt];
+
+    \pgfmathanglebetweenpoints
+        {\pgfpointanchor{A}{center}}
+        {\pgfpointanchor{A1}{center}}
+    \let\angle\pgfmathresult
+
+    \draw [red] (A1) arc [radius=1, start angle=0, end angle=360];
+
+    \draw [red] ($(B1)$) arc [radius=1, start angle=0, end angle=360];
+    
+
+
+\end{tikzpicture}
+
+
+\end{document}

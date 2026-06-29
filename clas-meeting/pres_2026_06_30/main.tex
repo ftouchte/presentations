@@ -16,6 +16,7 @@
 \usepackage{fontawesome5}
 \usepackage{ulem}
 \usepackage{wasysym}
+\usepackage{diagbox}
 
 \usetheme{MyStyle}   % loads beamerthemeMyStyle.sty
 \setlength{\columnsep}{0pt}
@@ -46,12 +47,265 @@
 %\section{Intro}
 %\section{Updates}
 
-\begin{frame}{The ALERT detector}
+\begin{frame}{AHDC alignment}
+    \begin{itemize}
+        \item Context: limitations in the AHDC track reconstruction
+            \begin{itemize}
+                \item need to improve the overall tracking resolution
+                \item need to improve the resolution of the reconstructed $\theta$
+                \item need to extra the relative position of the AHDC with respect to CLAS
+            \end{itemize}
+        % \item Principle: 
+        %     \begin{itemize}
+        %         \item Select elastic events : electron + track (collection of hits)
+        %         \item Compute the expected track kinematics from the electron ones
+        %         \item Propagate the expected track
+        %         \item Estimate how far it deviates from the measured collection of hits
+        %     \end{itemize}
+        % \item Our observable : {\color{red}residual\_LR}
+    \end{itemize}
+
+    \begin{minipage}{0.55\linewidth}
+        \begin{itemize}
+            \item Principle: 
+                \begin{itemize}
+                    \item Select elastic events : electron + track (collection of hits)
+                    \item Compute the expected track kinematics from the electron ones
+                    \item Propagate the expected track
+                    \item Estimate how far it deviates from the measured collection of hits
+                \end{itemize}
+            \item Our observable : {\color{red}residual\_LR}
+                \begin{itemize}
+                    \item It indicates whether the track is on right or on the left of the measurement
+                \end{itemize}
+            \item Correction angles (rotZ)
+                \[
+                    \alpha_i = \alpha_{i-1} - \frac{r_i}{R}\cdot \frac{1}{2}
+                \]
+        \end{itemize}
+    \end{minipage}
+    \begin{minipage}{0.42\linewidth}
+        \begin{figure}
+            \includegraphics[width=\linewidth]{figures/build/residual_LR_concept.pdf}
+        \end{figure}
+    \end{minipage}
+    
+\end{frame}
+
+\begin{frame}{Layer alignment without fit}
+    \begin{itemize}
+        \item First attempt (top $\rightarrow$ without alignment, bottom $\rightarrow$ with alignment)
+            \begin{itemize}
+                \item The distributions are more centered
+                \item Move from -0.51 to 0.01 as mean value on layer 41
+                \item \textbf{residual\_LR} is a good observable
+            \end{itemize}
+    \end{itemize}
+
+    % see slide 3 of presentation : https://clasweb.jlab.org/wiki/images/f/fe/Pres_2026_03_23_ahdc_alignment.pdf 
+    \begin{center}
+        \setlength{\tabcolsep}{3pt}
+        \begin{tabular}{ccc}
+            \includegraphics[width=0.3\linewidth]{figures/residual_LR_all_layers_without_fit.pdf} & 
+                \includegraphics[width=0.3\linewidth]{figures/residual_LR_layer22_without_fit.pdf} &
+                    \includegraphics[width=0.3\linewidth]{figures/residual_LR_layer41_without_fit.pdf} \\
+            \includegraphics[width=0.3\linewidth]{figures/residual_LR_all_layers_with_fit.pdf} & 
+                \includegraphics[width=0.3\linewidth]{figures/residual_LR_layer22_with_fit.pdf} &
+                    \includegraphics[width=0.3\linewidth]{figures/residual_LR_layer41_with_fit.pdf} \\
+        \end{tabular}
+    \end{center}
+
+    \begin{center}
+        \setlength{\tabcolsep}{4pt}
+        \begin{tabular}{|c|cccccccc|}
+            \hline
+            Layer  & 11 & 21 & 22 & 31 & 32 & 41 & 42 & 51 \\
+            \hline
+            rotZ (deg) & 0 & +2.55 & +2.11 & 0 & -0.32 & +3 & +2.13 & -0.21 \\
+            \hline
+        \end{tabular}
+    \end{center}
+
+\end{frame}
+
+\begin{frame}{Layer alignment without fit}
+    \begin{itemize}
+        \item The alignment is so much dependent on the precision of the vertex determination
+            % \begin{itemize}
+            %     \item The alignment is so dependent of the relative position of the AHDC with respect to CLAS
+            % \end{itemize}
+    \end{itemize}
+
+    \begin{center}
+        (AHDC vz) = {\color{red}(CLAS electron vz)} - {\color{blue}(vz shift)}
+    \end{center}
+
+    \begin{itemize}
+        \item Limitations
+            \begin{itemize}
+                \item {\color{red}(CLAS electron vz)} has a small resolution for elastic events, $\theta_{e} \sim 6^\circ$
+                \item {\color{blue}(vz shift)} relative position of the AHDC relative to the center of CLAS
+            \end{itemize}
+        % \item Solutions/Observations
+        %     \begin{itemize}
+        %         \item Doing a fit can release the constraint on {\color{red}(CLAS electron vz)}
+        %         \item Using the exact {\color{blue}(vz shift)} value
+        %     \end{itemize}
+    \end{itemize}
+
+    \begin{itemize}
+        \item Solutions/Observations
+            \begin{itemize}
+                \item Doing a fit can release the constraint on {\color{red}(CLAS electron vz)}
+                \item Using the exact {\color{blue}(vz shift)} value make the correction angles smaller (so more physical)
+            \end{itemize}
+    \end{itemize}
+
+    \vspace{0.05cm}
+
+    \begin{center} \footnotesize
+        \begin{tabular}{|c|c|c|c|}
+            \hline
+            \diagbox{layer}{shift} & -54 mm & -30 mm & -70 mm\\
+            \hline
+            11 & 0  deg   & -1.49 & +0.756 \\
+            21 & +2.55 & +3.82 & +1.517 \\
+            22 & +2.11 & +3.24 & +0.984 \\
+            31 & 0     & -1.54 & +0.807 \\
+            32 & -0.32 & -1.96 & +0.382 \\
+            41 & +3.0  & +3.73 & +1.305 \\
+            42 & +2.13 & +3.3  & +0.975 \\
+            51 & -0.21 & -1.61 & +0.679 \\
+            \hline
+        \end{tabular}
+    \end{center}
+
+\end{frame}
+
+\begin{frame}{First vz alignment - position scan}
+    \begin{itemize}
+        \item According to the layer alignment without fit, the optimal AHDC position with respect to CLAS is {\color{blue}-75 mm}
+    \end{itemize}
+
+    \begin{figure}
+        \includegraphics[width=0.75\linewidth]{figures/ahdc_position_scan.pdf}
+    \end{figure}
+
+    \begin{itemize}
+        \item The next alignment has been done by performing a {\color{red}fit} with a {\color{blue}-75 mm} shift
+    \end{itemize}
+\end{frame}
+
+\begin{frame}{Layer alignment with fit}
+    \begin{itemize}
+        \item The residual\_LR shift is difficult to see in the integrated distribution
+        \item A misalignment is highlighted looking at the residual\_LR versus vz
+        \item We decided to apply different correction angles at the two ends of the detector
+    \end{itemize}
+
+    \vspace{0.3cm}
+
+    \begin{center}
+        \setlength{\tabcolsep}{3pt}
+        \begin{tabular}{ccc}
+            \includegraphics[width=0.3\linewidth]{figures/noalignment_all_layers.png} & 
+                \includegraphics[width=0.3\linewidth]{figures/noalignment_layer22.png} &
+                    \includegraphics[width=0.3\linewidth]{figures/noalignment_layer41.png} \\
+            \includegraphics[width=0.3\linewidth]{figures/noalignment_all_layers_vz.png} & 
+                \includegraphics[width=0.3\linewidth]{figures/noalignment_layer22_vz.png} &
+                    \includegraphics[width=0.3\linewidth]{figures/noalignment_layer41_vz.png} \\
+        \end{tabular}
+    \end{center}
+\end{frame}
+
+\begin{frame}{Layer alignment with fit}
     \begin{itemize}
         \item 
     \end{itemize}
-    
+
+    \vspace{0.3cm}
+
+    \begin{center}
+        \setlength{\tabcolsep}{3pt}
+        \begin{tabular}{ccc}
+            \includegraphics[width=0.3\linewidth]{figures/alignment_all_layers.png} & 
+                \includegraphics[width=0.3\linewidth]{figures/alignment_layer22.png} &
+                    \includegraphics[width=0.3\linewidth]{figures/alignment_layer41.png} \\
+            \includegraphics[width=0.3\linewidth]{figures/alignment_all_layers_vz.png} & 
+                \includegraphics[width=0.3\linewidth]{figures/alignment_layer22_vz.png} &
+                    \includegraphics[width=0.3\linewidth]{figures/alignment_layer41_vz.png} \\
+        \end{tabular}
+    \end{center}
 \end{frame}
+
+
+
+
+
+% \begin{frame}{Backup slides - Appendix}
+%     \begin{itemize}
+%         \item Correction angles (rotZ)
+%         \begin{itemize}
+%             \item $r_i$ measured residual\_LR 
+%             \item $R$ radius of the layer (for which belongs a given wire)
+%             \item $\alpha_{i-1}$ current correction angle
+%             \item $\alpha_i$ updated correction angle
+%         \end{itemize}
+%     \end{itemize}
+
+%     \[
+%         \boxed{\alpha_i = \alpha_{i-1} - \frac{r_i}{R}\cdot \frac{1}{2}}
+%     \]
+
+%     % \centering
+%     % \includegraphics[width=0.3\linewidth]{figures/build/residual_types.pdf}
+
+% \end{frame}
+
+% \begin{frame}{Backup slides - Layer alignment}
+%     \begin{itemize}
+%         \item Before alignment
+%     \end{itemize}
+
+%     \centering
+%     \vspace{0.2cm}
+
+%     \includegraphics[width=0.7\linewidth]{figures/residual_LR_iter_1_before.pdf}
+% \end{frame}
+
+% \begin{frame}{Backup slides - Layer alignment}
+%     \begin{itemize}
+%         \item After alignment
+%     \end{itemize}
+
+%     \centering
+%     \vspace{0.2cm}
+
+%     \includegraphics[width=0.7\linewidth]{figures/residual_LR_iter_1_after.pdf}
+% \end{frame}
+
+
+% \begin{frame}{Backup slides - Layer alignment}
+%     \begin{itemize}
+%         \item Before alignment
+%     \end{itemize}
+
+%     \centering
+%     \vspace{0.2cm}
+
+%     \includegraphics[width=0.7\linewidth]{figures/corr_vz_residual_LR_iter_1_before.pdf}
+% \end{frame}
+
+% \begin{frame}{Backup slides - Layer alignment}
+%     \begin{itemize}
+%         \item After alignment
+%     \end{itemize}
+
+%     \centering
+%     \vspace{0.2cm}
+
+%     \includegraphics[width=0.7\linewidth]{figures/corr_vz_residual_LR_iter_1_after.pdf}
+% \end{frame}
 
 
 \end{document}
