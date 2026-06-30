@@ -233,9 +233,9 @@
 
 \begin{frame}{Layer alignment}
     \begin{itemize}
-        \item The residual\_LR shift is difficult to see in the integrated distribution
-        \item A misalignment is highlighted looking at the residual\_LR versus vz
-        \item We decided to apply different correction angles at the two ends of the detector
+        \item We want the {\color{blue}residual\_LR} to be well centered with $\langle r \rangle$ lower than 10 µm
+        %\item The residual\_LR shift is difficult to see in the integrated distribution
+        \item The slope in {\color{blue}residual\_LR} versus {\color{red}vz} requires to apply different correction angles at the two ends of the detector
     \end{itemize}
 
     \vspace{0.3cm}
@@ -255,9 +255,9 @@
 
 \begin{frame}{Layer alignment}
     \begin{itemize}
-        \item Corresponding distributions after alignment
-        \item Work already implemented in coatjava
-        \item Next step: wire by wire alignment
+        \item Corresponding distributions after alignment {\footnotesize ({\color{blue}upstream\_rotZ} $\rightarrow$ {\color{red}downstream\_rotZ})}
+        \item Next step: wire by wire alignment, only a {\color{violet}rotZ} relative to the layer alignment
+        \item CCDB created and work already implemented in coatjava
     \end{itemize}
 
     \vspace{0.3cm}
@@ -278,14 +278,15 @@
 
 
 
-\begin{frame}{Other - About tracking}
+\begin{frame}{About tracking}
     \begin{itemize}
-        \item $t_0$ and T2D calibration are ongoing, but we can already achieve good resolutions layer by layer, especially layer 41
+        \item $t_0$ and T2D calibration are ongoing, but we can already achieve good resolutions layer by layer
+        \item E.g. after 25 iterations, the layer 41 reached a resolution is 210 µm !
+        \item For now, I cannot really explain why this layer is so particular
     \end{itemize}
 
-    % \begin{figure}
-    %     \includegraphics[width=0.7\linewidth]{figures/residual_LR_iter_1.pdf}
-    % \end{figure}
+    \vspace{0.3cm}
+
     \begin{center}
         \setlength{\tabcolsep}{3pt}
         \begin{tabular}{ccc}
