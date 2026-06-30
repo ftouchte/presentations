@@ -47,6 +47,85 @@
 %\section{Intro}
 %\section{Updates}
 
+\begin{frame}{Reminder - AHDC geometry}
+    \begin{itemize}
+        \item Cylindrical wire chamber filled with He/CO$_2$ (80/20\%)
+        \item Novelty : 
+            \begin{itemize}
+                \item All wires have the same $\diameter$, 30 µm, and AlMg5 material
+                \item Total of 3026 wires, 576 are readouts with positive charge
+                %\item No guard wires (sense wire $\leftrightarrow$ HV, field wire $\leftrightarrow$ ground)
+                \item Sense wires are distributed over 5 superlayers containing 1 or 2 layers (11, 21, 22, 31, 32, 41, 42, 51)
+                \item It has stereo angles varying from 3.8$^\circ$ to 7.4$^\circ$ between superlayers for the vz reconstruction
+            \end{itemize}
+    \end{itemize}
+
+    \centering
+    \vspace{0.4cm}
+
+    %\includegraphics[width=0.35\linewidth]{figures/build/ahdc-cell.pdf}
+    \begin{tabular}{cc}
+        \includegraphics[width=0.32\linewidth]{figures/build/ahdc_cell.pdf} & 
+        \includegraphics[width=4cm, height=3.8cm]{figures/all-ahdc-wires.png}
+    \end{tabular}
+\end{frame}
+
+\begin{frame}{Issue fixed - AHDC wire swaps}
+    \begin{itemize}
+        \item Analyzing wire by wire distributions we found 4 couples of wire swaps
+        \item Distributions before (on the left) and after fix (on the right)
+    \end{itemize}
+
+    % \begin{center}
+    %     \begin{tabular}{ccc}
+    %         L21W18 & $\longleftrightarrow$ & L21W19 \\
+    %         L22W20 & $\longleftrightarrow$ & L22W22 \\
+    %         L22W42 & $\longleftrightarrow$ & L22W43 \\
+    %         L31W68 & $\longleftrightarrow$ & L32W68 \\
+    %     \end{tabular}
+    % \end{center}
+
+    \vspace{0.1cm}
+
+    \begin{center}
+        \setlength{\tabcolsep}{3pt}
+        \begin{tabular}{cc|cc}
+            \includegraphics[width=0.20\linewidth]{figures/L21W18_old_tt.pdf} & \includegraphics[width=0.20\linewidth]{figures/L21W19_old_tt.pdf} & \includegraphics[width=0.20\linewidth]{figures/L21W18_new_tt.pdf} & \includegraphics[width=0.20\linewidth]{figures/L21W19_new_tt.pdf} \\
+
+            \includegraphics[width=0.20\linewidth]{figures/L22W20_old_tt.pdf} & \includegraphics[width=0.20\linewidth]{figures/L22W22_old_tt.pdf} & \includegraphics[width=0.20\linewidth]{figures/L22W20_new_tt.pdf} & \includegraphics[width=0.20\linewidth]{figures/L22W22_new_tt.pdf} \\
+
+            \includegraphics[width=0.20\linewidth]{figures/L22W42_old_tt.pdf} & \includegraphics[width=0.20\linewidth]{figures/L22W43_old_tt.pdf} & \includegraphics[width=0.20\linewidth]{figures/L22W42_new_tt.pdf} & \includegraphics[width=0.20\linewidth]{figures/L22W43_new_tt.pdf} \\
+            
+            \includegraphics[width=0.20\linewidth]{figures/L31W68_old_tt.pdf} & \includegraphics[width=0.20\linewidth]{figures/L32W68_old_tt.pdf} & \includegraphics[width=0.20\linewidth]{figures/L31W68_new_tt.pdf} & \includegraphics[width=0.20\linewidth]{figures/L32W68_new_tt.pdf} \\
+        \end{tabular}
+    \end{center}
+    
+    
+
+\end{frame}
+
+\begin{frame}{Issue fixed -  AHDC wire swaps}
+    \begin{itemize}
+        \item Swaps were also visible in the wire occupancy versus electron $\phi_e$ distributions for elastic events
+    \end{itemize}
+
+    \begin{figure}
+        \includegraphics[width=0.9\linewidth]{figures/wire_versus_phi_old_translation_table_annotated.pdf}
+    \end{figure}
+
+\end{frame}
+
+\begin{frame}{Issue fixed - AHDC wire swaps}
+    \begin{itemize}
+        \item  Wire occupancy versus electron $\phi_e$ distributions for elastic events after fixing the translation table
+    \end{itemize}
+
+    \begin{figure}
+        \includegraphics[width=0.9\linewidth]{figures/wire_versus_phi_new_translation_table.pdf}
+    \end{figure}
+
+\end{frame}
+
 \begin{frame}{AHDC alignment}
     \begin{itemize}
         \item Context: limitations in the AHDC track reconstruction
@@ -55,14 +134,6 @@
                 \item need to improve the resolution of the reconstructed $\theta$
                 \item need to extra the relative position of the AHDC with respect to CLAS
             \end{itemize}
-        % \item Principle: 
-        %     \begin{itemize}
-        %         \item Select elastic events : electron + track (collection of hits)
-        %         \item Compute the expected track kinematics from the electron ones
-        %         \item Propagate the expected track
-        %         \item Estimate how far it deviates from the measured collection of hits
-        %     \end{itemize}
-        % \item Our observable : {\color{red}residual\_LR}
     \end{itemize}
 
     \begin{minipage}{0.55\linewidth}
@@ -92,45 +163,9 @@
     
 \end{frame}
 
-\begin{frame}{Layer alignment without fit}
+\begin{frame}{Effect of the vz alignment on $\phi$}
     \begin{itemize}
-        \item First attempt (top $\rightarrow$ without alignment, bottom $\rightarrow$ with alignment)
-            \begin{itemize}
-                \item The distributions are more centered
-                \item Move from -0.51 to 0.01 as mean value on layer 41
-                \item \textbf{residual\_LR} is a good observable
-            \end{itemize}
-    \end{itemize}
-
-    % see slide 3 of presentation : https://clasweb.jlab.org/wiki/images/f/fe/Pres_2026_03_23_ahdc_alignment.pdf 
-    \begin{center}
-        \setlength{\tabcolsep}{3pt}
-        \begin{tabular}{ccc}
-            \includegraphics[width=0.3\linewidth]{figures/residual_LR_all_layers_without_fit.pdf} & 
-                \includegraphics[width=0.3\linewidth]{figures/residual_LR_layer22_without_fit.pdf} &
-                    \includegraphics[width=0.3\linewidth]{figures/residual_LR_layer41_without_fit.pdf} \\
-            \includegraphics[width=0.3\linewidth]{figures/residual_LR_all_layers_with_fit.pdf} & 
-                \includegraphics[width=0.3\linewidth]{figures/residual_LR_layer22_with_fit.pdf} &
-                    \includegraphics[width=0.3\linewidth]{figures/residual_LR_layer41_with_fit.pdf} \\
-        \end{tabular}
-    \end{center}
-
-    \begin{center}
-        \setlength{\tabcolsep}{4pt}
-        \begin{tabular}{|c|cccccccc|}
-            \hline
-            Layer  & 11 & 21 & 22 & 31 & 32 & 41 & 42 & 51 \\
-            \hline
-            rotZ (deg) & 0 & +2.55 & +2.11 & 0 & -0.32 & +3 & +2.13 & -0.21 \\
-            \hline
-        \end{tabular}
-    \end{center}
-
-\end{frame}
-
-\begin{frame}{Layer alignment without fit}
-    \begin{itemize}
-        \item The alignment is so much dependent on the precision of the vertex determination
+        \item The phi alignment is so much dependent on the precision of the vertex determination
             % \begin{itemize}
             %     \item The alignment is so dependent of the relative position of the AHDC with respect to CLAS
             % \end{itemize}
@@ -143,7 +178,7 @@
     \begin{itemize}
         \item Limitations
             \begin{itemize}
-                \item {\color{red}(CLAS electron vz)} has a small resolution for elastic events, $\theta_{e} \sim 6^\circ$
+                \item {\color{red}(CLAS electron vz)} has a limited resolution for elastic events, $\theta_{e} \sim 6^\circ$
                 \item {\color{blue}(vz shift)} relative position of the AHDC relative to the center of CLAS
             \end{itemize}
         % \item Solutions/Observations
@@ -184,7 +219,7 @@
 
 \begin{frame}{First vz alignment - position scan}
     \begin{itemize}
-        \item According to the layer alignment without fit, the optimal AHDC position with respect to CLAS is {\color{blue}-75 mm}
+        \item According to the layer alignment without fit, the optimal AHDC position with respect to CLAS is {\color{blue}-75~mm}
     \end{itemize}
 
     \begin{figure}
@@ -192,11 +227,11 @@
     \end{figure}
 
     \begin{itemize}
-        \item The next alignment has been done by performing a {\color{red}fit} with a {\color{blue}-75 mm} shift
+        \item The following alignment works have been done by performing a {\color{red}fit} with a {\color{blue}-75~mm} shift
     \end{itemize}
 \end{frame}
 
-\begin{frame}{Layer alignment with fit}
+\begin{frame}{Layer alignment}
     \begin{itemize}
         \item The residual\_LR shift is difficult to see in the integrated distribution
         \item A misalignment is highlighted looking at the residual\_LR versus vz
@@ -218,7 +253,7 @@
     \end{center}
 \end{frame}
 
-\begin{frame}{Layer alignment with fit}
+\begin{frame}{Layer alignment}
     \begin{itemize}
         \item Corresponding distributions after alignment
         \item Work already implemented in coatjava
@@ -241,70 +276,27 @@
 \end{frame}
 
 
-\begin{frame}{Other - AHDC wire swaps}
-    \begin{itemize}
-        \item Analyzing wire by wire distributions we found 4 couples of wire swaps
-        \item Distributions before (on the left) and after fix (on the right)
-    \end{itemize}
 
-    % \begin{center}
-    %     \begin{tabular}{ccc}
-    %         L21W18 & $\longleftrightarrow$ & L21W19 \\
-    %         L22W20 & $\longleftrightarrow$ & L22W22 \\
-    %         L22W42 & $\longleftrightarrow$ & L22W43 \\
-    %         L31W68 & $\longleftrightarrow$ & L32W68 \\
-    %     \end{tabular}
-    % \end{center}
-
-    \vspace{0.1cm}
-
-    \begin{center}
-        \setlength{\tabcolsep}{3pt}
-        \begin{tabular}{cc|cc}
-            \includegraphics[width=0.20\linewidth]{figures/L21W18_old_tt.pdf} & \includegraphics[width=0.20\linewidth]{figures/L21W19_old_tt.pdf} & \includegraphics[width=0.20\linewidth]{figures/L21W18_new_tt.pdf} & \includegraphics[width=0.20\linewidth]{figures/L21W19_new_tt.pdf} \\
-
-            \includegraphics[width=0.20\linewidth]{figures/L22W20_old_tt.pdf} & \includegraphics[width=0.20\linewidth]{figures/L22W22_old_tt.pdf} & \includegraphics[width=0.20\linewidth]{figures/L22W20_new_tt.pdf} & \includegraphics[width=0.20\linewidth]{figures/L22W22_new_tt.pdf} \\
-
-            \includegraphics[width=0.20\linewidth]{figures/L22W42_old_tt.pdf} & \includegraphics[width=0.20\linewidth]{figures/L22W43_old_tt.pdf} & \includegraphics[width=0.20\linewidth]{figures/L22W42_new_tt.pdf} & \includegraphics[width=0.20\linewidth]{figures/L22W43_new_tt.pdf} \\
-            
-            \includegraphics[width=0.20\linewidth]{figures/L31W68_old_tt.pdf} & \includegraphics[width=0.20\linewidth]{figures/L32W68_old_tt.pdf} & \includegraphics[width=0.20\linewidth]{figures/L31W68_new_tt.pdf} & \includegraphics[width=0.20\linewidth]{figures/L32W68_new_tt.pdf} \\
-        \end{tabular}
-    \end{center}
-    
-    
-
-\end{frame}
-
-\begin{frame}{Other - AHDC wire swaps}
-    \begin{itemize}
-        \item Swaps were also visible in the wire versus phi distributions for elastic events
-    \end{itemize}
-
-    \begin{figure}
-        \includegraphics[width=0.9\linewidth]{figures/wire_versus_phi_old_translation_table_annotated.pdf}
-    \end{figure}
-
-\end{frame}
-
-\begin{frame}{Other - AHDC wire swaps}
-    \begin{itemize}
-        \item  Wire versus phi distributions after fix
-    \end{itemize}
-
-    \begin{figure}
-        \includegraphics[width=0.9\linewidth]{figures/wire_versus_phi_new_translation_table.pdf}
-    \end{figure}
-
-\end{frame}
 
 \begin{frame}{Other - About tracking}
     \begin{itemize}
         \item $t_0$ and T2D calibration are ongoing, but we can already achieve good resolutions layer by layer, especially layer 41
     \end{itemize}
 
-    \begin{figure}
-        \includegraphics[width=0.7\linewidth]{figures/residual_LR_iter_1.pdf}
-    \end{figure}
+    % \begin{figure}
+    %     \includegraphics[width=0.7\linewidth]{figures/residual_LR_iter_1.pdf}
+    % \end{figure}
+    \begin{center}
+        \setlength{\tabcolsep}{3pt}
+        \begin{tabular}{ccc}
+            \includegraphics[width=0.3\linewidth]{figures/residual_all_layers.png} & 
+                \includegraphics[width=0.3\linewidth]{figures/residual_layer22.png} &
+                    \includegraphics[width=0.3\linewidth]{figures/residual_layer41.png} \\
+            \includegraphics[width=0.3\linewidth]{figures/time2distance_all_layers.png} & 
+                \includegraphics[width=0.3\linewidth]{figures/time2distance_layer22.png} &
+                    \includegraphics[width=0.3\linewidth]{figures/time2distance_layer41.png}
+        \end{tabular}
+    \end{center}
 \end{frame}
 
 \begin{frame}{Conclusion}
