@@ -51,20 +51,16 @@
     \end{itemize}
 
     \begin{center}
-        (AHDC vz) $=$ {\color{green!50!black} (CLAS electron vz)} $+$ {\color{blue}(vz shift)}
-    \end{center}
-
-    \begin{center}
-        {\color{blue}(vz shift)} $=$ {\color{red} (CLAS Upstream VZ peak)} $+$ {\color{RoyalBlue}(ALERT Survey location)}
+        (AHDC vz) $=$ {\color{green!50!black} (CLAS electron vz)} $-$ {\color{blue}(vz shift)}
     \end{center}
 
     \begin{itemize}
-        \item {\color{RoyalBlue}(ALERT Survey location)} is 39.94 mm from the CLAS Upstream VZ peak location
-        \item {\color{red} (CLAS Upstream VZ peak)} vary over the run period
+        \item According to the survey {\color{blue}(vz shift)} is -39.94 mm far from the center of CLAS
+        \item However, looking at the timeline, we know that the vz reconstruction might be bias depending on the torus configuration
             \begin{itemize}
-                \item up to 3 cm shift between the inbending and outbending values
+                \item up to 30 mm shift between the inbending and outbending configuration
             \end{itemize}
-        \item The true {\color{blue}(vz shift)} value is obtained by alignment for each configuration
+        \item We decide to determine {\color{blue}(vz shift)} empirically
     \end{itemize}
 
     \centering
@@ -72,6 +68,7 @@
 
     \begin{figure}
         \includegraphics[width=\linewidth]{figures/upstream_vz_peak_over_run.png}
+        \caption{Forward electron vz (upstream peak value). See \href{https://clas12mon.jlab.org/rgl/pass0_v10.3_alert/forward/timeline/}{timeline}}
     \end{figure}
 
 \end{frame}
@@ -79,17 +76,17 @@
 
 \begin{frame}{vz alignment}
     \begin{itemize}
-        \item principle : {\color{green!50!black} (CLAS electron vz)} $-$  (AHDC vz) $+$ {\color{blue}(vz shift)} should be zero
+        \item principle : {\color{green!50!black} (CLAS electron vz)} $-$  (AHDC vz) $-$ {\color{blue}(vz shift)} should be zero
         \item Outbending (left column), Inbending (right column)
-        \item The optimal values (+67 mm and +36 mm) will be taken into in coatjava
+        \item The optimal values are -67 mm and -36 mm
     \end{itemize}
 
     \centering
     \vspace{0.2cm}
 
     \begin{tabular}{cc}
-        \includegraphics[width=0.35\linewidth]{figures/delta_value_2gev.pdf}    & \includegraphics[width=0.35\linewidth]{figures/delta_value_10gev.pdf} \\
-        \includegraphics[width=0.35\linewidth]{figures/track_delta_vz_2gev.pdf} & \includegraphics[width=0.35\linewidth]{figures/track_delta_vz_10gev.pdf} \\
+        \includegraphics[width=0.34\linewidth]{figures/delta_value_2gev.pdf}    & \includegraphics[width=0.34\linewidth]{figures/delta_value_10gev.pdf} \\
+        \includegraphics[width=0.34\linewidth]{figures/track_delta_vz_2gev.pdf} & \includegraphics[width=0.34\linewidth]{figures/track_delta_vz_10gev.pdf} \\
     \end{tabular}
 \end{frame}
 
