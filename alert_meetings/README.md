@@ -17,4 +17,8 @@
 
 - 2026/08/17 -- [Time reconstruction of saturated signals - efficiency](./pres_2026_08_17/build/main.pdf)
 
+- 2026/08/24 -- [Time reconstruction of saturated signals - results](./pres_2026_08_24/build/main.pdf)
+
+
+
 

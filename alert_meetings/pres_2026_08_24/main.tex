@@ -1,0 +1,104 @@
+\documentclass[10pt,aspectratio=43]{beamer}
+
+\usepackage{graphicx}
+\usepackage{tikz}
+\usepackage{xcolor}
+\usepackage{caption}
+\usepackage{subcaption}
+\usepackage{bm}
+\usetikzlibrary{calc} 
+\usepackage{hyperref}
+\hypersetup{
+    colorlinks=true,
+    linkcolor=blue,
+    urlcolor=red
+}
+\usepackage{fontawesome5}
+\usepackage{ulem}
+\usepackage[dvipsnames]{xcolor}
+
+\usetheme{MyStyle}   % loads beamerthemeMyStyle.sty
+\setlength{\columnsep}{0pt}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\title{Time reconstruction of saturated signals}
+\newcommand{\eventname}{CALCOM meeting}
+\author{Felix Touchte Codjo}
+\institute{IJCLab}
+\date{\today}
+
+
+\begin{document}
+
+\begin{frame}[plain] % remove header, footer, barre de navigation
+\titlepage
+\end{frame}
+
+%\begin{frame}{Outline}
+%\tableofcontents
+%\end{frame}
+
+%\section{Intro}
+\section{Updates}
+
+
+
+\begin{frame}{Known issue}
+    \begin{itemize}
+        \item For complete signals, the time of arrival is extracted at half the amplitude
+        \item For saturated signals, the true amplitude is not accessible
+            \begin{itemize}
+                \item the reconstructed time is \textbf{currently} under-estimated
+                \item some hits may not pass selection cuts and tracks can be lost
+            \end{itemize}
+        \item This study aimed to apply a special treatment to these signals
+    \end{itemize}
+
+    \centering
+    \vspace{0.2cm}
+
+    \begin{figure}
+        \includegraphics[width=0.55\linewidth]{figures/build/isssue-time-of-saturated-signals.pdf}
+    \end{figure}
+
+\end{frame}
+
+
+\begin{frame}{Observable}
+    \begin{itemize}
+        \item We found that the slope \footnote{Maximum deviation of the signal between to consecutive samples} of the signal is linearly correlated to the amplitude of the signal
+        \item In the saturation regime, one can then use the slope to estimate the amplitude of the signal
+    \end{itemize}
+
+    \begin{equation*}
+        \bm{ADC}_{corr} = f(\bm{slope})
+    \end{equation*}
+
+    \centering
+    \vspace{0.2cm}
+
+    \begin{tabular}{cc}
+        \includegraphics[width=0.48\linewidth]{figures/slope-versus-adc-all-signals.pdf} &
+        \includegraphics[width=0.48\linewidth]{figures/slope-versus-adc-wfType0.pdf} 
+    \end{tabular}
+    
+\end{frame}
+
+
+
+
+
+
+
+
+
+
+
+
+\end{document}
+
+
