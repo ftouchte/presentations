@@ -90,6 +90,8 @@
 
 % draw ADC limits
 \draw [dotted] (1.8,4.5) -- (0,4.5) node [left] {\scalebox{0.75}{estimated ADC}};
+
+% Draw error band
 \pgfmathsetmacro{\adcError}{0.1}
 \pgfmathsetmacro{\timeError}{\adcError*3/20}
 \fill [gray, fill opacity=0.4] (3,4.5+\adcError) rectangle (0,4.5-\adcError);
