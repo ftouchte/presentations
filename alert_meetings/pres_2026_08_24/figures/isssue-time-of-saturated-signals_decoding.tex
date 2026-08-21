@@ -83,7 +83,7 @@
 
 % draw time
 \draw [dotted] (N1) -- (N1 |- 0,0) node [below right] {\scalebox{0.75}{reconstructed time}};
-%\draw [dotted] (S1) -- (S1 |- 0,0);
+\draw [dotted] (S1) -- (S1 |- 0,0);
 
 % \draw[thick, ->] (\xmin,\ymin) -- (\xmax+0.05*\deltax,\ymin) node[right] {$x$};
 % \draw[thick, ->] (\xmin,\ymin) -- (\xmin,\ymax+0.05*\deltay) node[above] {$y$};
@@ -92,7 +92,7 @@
 \draw [dotted] (1.8,4.5) -- (0,4.5) node [left] {\scalebox{0.75}{estimated ADC}};
 
 % Draw error band
-\pgfmathsetmacro{\adcError}{0.1}
+\pgfmathsetmacro{\adcError}{0.2}
 \pgfmathsetmacro{\timeError}{\adcError*3/20}
 \fill [gray, fill opacity=0.4] (3,4.5+\adcError) rectangle (0,4.5-\adcError);
 
@@ -105,10 +105,10 @@
 
 %\draw [dotted] (1.2,3) -- (0,3) node [left] {\scalebox{0.75}{saturated ADC}};
 
-%\draw [dotted] (S1) -- (S1 -| 0,0) node [left] {\scalebox{0.75}{1/2 saturated ADC}};
+\draw [dotted] (S1) -- (S1 -| 0,0) node [left] {\scalebox{0.75}{1/2 saturated ADC}};
+
 
 % draw slope
-
 % \pgfmathsetmacro{\xslope}{1}
 % \draw [red, name path = slopeVerticalLine] (\xslope, -1) -- (\xslope, 5); 
 % \path [name intersections={of=normalSignal and slopeVerticalLine, by=SL}];
@@ -119,10 +119,16 @@
 \coordinate (BB) at ($(A)!1.25!(B)$);
 
 \draw [dashdotted] (AA) -- (BB);
+
+% draw step circle
 \node [right, draw, circle, solid, thin, inner sep=2pt, xshift=2pt] at (BB) {\scalebox{0.75}{1}};
 
 
 \node [right, draw, circle, solid, thin, inner sep=2pt, xshift=2pt] at (2.1,4.5) {\scalebox{0.75}{2}};
+
+\node [right, draw, circle, solid, thin, inner sep=2pt, xshift=2pt] at (N1) {\scalebox{0.75}{3}};
+
+\node [above right, draw, circle, solid, thin, inner sep=2pt, xshift=3pt, yshift=3pt] at (N1x) {\scalebox{0.75}{4}};
 
 \end{tikzpicture}
 
