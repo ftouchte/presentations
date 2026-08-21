@@ -47,15 +47,19 @@
 
 
 
-\begin{frame}{Known issue}
+\begin{frame}{Current situation}
     \begin{itemize}
-        \item For complete signals, the time of arrival is extracted at half the amplitude
-        \item For saturated signals, the true amplitude is not accessible
+        \item The time of arrival is extracted at half the amplitude
+        \item For saturated signals, this creates a bias
             \begin{itemize}
-                \item the reconstructed time is \textbf{currently} under-estimated
-                \item some hits may not pass selection cuts and tracks can be lost
+                \item The reconstructed time is under-estimated
+                \item This will impact track reconstruction of $\alpha$ particles
+                \item Some hits may not even pass selection cuts and tracks can be lost
             \end{itemize}
-        \item This study aimed to apply a special treatment to these signals
+        \item This study aims to reconstruct a corrected time
+            \begin{itemize}
+                \item The first step is to reconstruct the ADC of the saturated signals
+            \end{itemize}
     \end{itemize}
 
     \centering
@@ -68,15 +72,17 @@
 \end{frame}
 
 
-\begin{frame}{Observable}
+\begin{frame}{Reconstructing the ADC}
     \begin{itemize}
-        \item We found that the slope \footnote{Maximum deviation of the signal between to consecutive samples} of the signal is linearly correlated to the amplitude of the signal
-        \item In the saturation regime, one can then use the slope to estimate the amplitude of the signal
+        \item We found that the maximum of the slope of the signal is linearly correlated to the amplitude of the signal
+            \begin{itemize}
+                \item Saturated hits seem to follow the trend
+            \end{itemize}
+        \item We can use the slope to estimate the amplitude of the signal
+            \begin{itemize}
+                \item We extract the ADC as a function of the slope from non-saturated signals and apply it to the saturated ones
+            \end{itemize}
     \end{itemize}
-
-    \begin{equation*}
-        \bm{ADC}_{corr} = f(\bm{slope})
-    \end{equation*}
 
     \centering
     \vspace{0.2cm}
@@ -86,54 +92,6 @@
         \includegraphics[width=0.48\linewidth]{figures/slope-versus-adc-wfType0.pdf} 
     \end{tabular}
     
-\end{frame}
-
-\begin{frame}{Time reconstruction}
-    \begin{itemize}
-        \item Once we have a reasonable estimate of the true amplitude, we can recompute the time at half amplitude
-            \begin{itemize}
-                \item The error of the estimation is well known and is propagated to the reconstructed time 
-                \item The big slope of saturated signals make the error on the time very minimal
-                \item The error on the time can be propagated to the DOCA and provided to the Kalman Filter
-            \end{itemize}
-        %\item 
-    \end{itemize}
-
-    \centering
-    \vspace{0.2cm}
-
-    \begin{figure}
-        \includegraphics[width=0.55\linewidth]{figures/build/isssue-time-of-saturated-signals_decoding.pdf}
-    \end{figure}
-\end{frame}
-
-\begin{frame}{Results - Effect of the ADC correction}
-    \begin{itemize}
-        \item Before correction
-            \begin{itemize}
-                \item We had an accumulation of small time around 3600 ADC
-                \item The distribution in the saturation region was unrelated to the distribution in the adjacent region, e.g. just below 3400 ADC
-            \end{itemize}
-        \item After correction
-            \begin{itemize}
-                \item The distribution is smoother, no apparent bias is observable
-                \item Quantitatively, we move from 2244 reconstructed tracks to 2436 over 239852 selected trigger events in run 21476, on 4He at 10.6 GeV, so a gain of 8.55\%
-            \end{itemize}
-        %\item Quantitatively, we move from 2244 reconstructed tracks to 2436 over 239852 selected trigger events in run 21476, so a gain of 8.55\%
-    \end{itemize}
-
-    \centering
-    \vspace{0.2cm}
-
-    {   \setlength{\tabcolsep}{2pt}
-        \renewcommand{\arraystretch}{0.5}
-        \begin{tabular}{cc}
-            \includegraphics[width=0.48\linewidth]{figures/time-vs-adc-before-adc-correction.pdf} &
-            \includegraphics[width=0.48\linewidth]{figures/time-vs-adc-after-adc-correction.pdf} \\
-            before & after \\
-        \end{tabular}
-    }
-
 \end{frame}
 
 \begin{frame}{Validation - Comparison with ToT}
@@ -173,6 +131,75 @@
     \end{figure}
     
 \end{frame}
+
+\begin{frame}{Time reconstruction}
+    \begin{itemize}
+        \item With the corrected amplitude, we can recompute the time
+            \begin{itemize}
+                \item We use the time at half the corrected ADC
+                \item However, sometimes even half ADC is above the saturation threshold
+                \item In this case, we extrapolate the signal based on the maximum slope to determine the time at half ADC
+                % \item The error of the estimation is well known and is propagated to the reconstructed time 
+                % \item The big slope of saturated signals make the error on the time very minimal
+                % \item The error on the time can be propagated to the DOCA and provided to the Kalman Filter
+            \end{itemize}
+        %\item 
+    \end{itemize}
+
+    \centering
+    \vspace{0.2cm}
+
+    % \begin{figure}
+    %     \includegraphics[width=0.55\linewidth]{figures/build/isssue-time-of-saturated-signals_decoding.pdf}
+    % \end{figure}
+
+    {   \setlength{\tabcolsep}{2pt}
+        \renewcommand{\arraystretch}{0.5}
+        \begin{tabular}{cc}
+            \includegraphics[width=0.48\linewidth]{figures/build/isssue-time-of-saturated-signals_decoding.pdf} &
+            \includegraphics[width=0.48\linewidth]{figures/build/isssue-time-of-saturated-signals_decoding_case2.pdf} \\
+            \footnotesize 1/2 ADC below saturation & \footnotesize 1/2 ADC above saturation \\
+            \footnotesize (direct interpolation) & \footnotesize (use the slope to extrapolate)
+        \end{tabular}
+    }
+\end{frame}
+
+\begin{frame}{Results - Effect of the correction}
+    \begin{itemize}
+        \item Before correction
+            \begin{itemize}
+                \item We had an accumulation of hits around 3600 ADC
+                \item Saturated hits had abnormal tail in the low time direction
+            \end{itemize}
+        \item After correction
+            \begin{itemize}
+                \item We reconstruct ADCs above saturation 
+                \item There are no more hit accumulation at low time and large amplitude
+                \item We move from 2244 reconstructed tracks to 2436
+                    \begin{itemize}
+                        \item[$\rightarrow$] Using 10 files of run 21476, on 4He at 10.6 GeV
+                        \item[$\rightarrow$] Most of the gained tracks have very high energy deposit
+                    \end{itemize}
+                
+            \end{itemize}
+        %\item Quantitatively, we move from 2244 reconstructed tracks to 2436 over 239852 selected trigger events in run 21476, so a gain of 8.55\%
+    \end{itemize}
+
+    \centering
+    \vspace{0.2cm}
+
+    {   \setlength{\tabcolsep}{2pt}
+        \renewcommand{\arraystretch}{0.5}
+        \begin{tabular}{cc}
+            \includegraphics[width=0.48\linewidth]{figures/time-vs-adc-before-adc-correction.pdf} &
+            \includegraphics[width=0.48\linewidth]{figures/time-vs-adc-after-adc-correction.pdf} \\
+            before & after \\
+        \end{tabular}
+    }
+
+\end{frame}
+
+
 
 
 
