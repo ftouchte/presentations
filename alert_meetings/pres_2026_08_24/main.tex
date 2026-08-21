@@ -88,6 +88,92 @@
     
 \end{frame}
 
+\begin{frame}{Time reconstruction}
+    \begin{itemize}
+        \item Once we have a reasonable estimate of the true amplitude, we can recompute the time at half amplitude
+            \begin{itemize}
+                \item The error of the estimation is well known and is propagated to the reconstructed time 
+                \item The big slope of saturated signals make the error on the time very minimal
+                \item The error on the time can be propagated to the DOCA and provided to the Kalman Filter
+            \end{itemize}
+        %\item 
+    \end{itemize}
+
+    \centering
+    \vspace{0.2cm}
+
+    \begin{figure}
+        \includegraphics[width=0.55\linewidth]{figures/build/isssue-time-of-saturated-signals_decoding.pdf}
+    \end{figure}
+\end{frame}
+
+\begin{frame}{Results - Effect of the ADC correction}
+    \begin{itemize}
+        \item Before correction
+            \begin{itemize}
+                \item We had an accumulation of small time around 3600 ADC
+                \item The distribution in the saturation region was unrelated to the distribution in the adjacent region, e.g. just below 3400 ADC
+            \end{itemize}
+        \item After correction
+            \begin{itemize}
+                \item The distribution is smoother, no apparent bias is observable
+                \item Quantitatively, we move from 2244 reconstructed tracks to 2436 over 239852 selected trigger events in run 21476, on 4He at 10.6 GeV, so a gain of 8.55\%
+            \end{itemize}
+        %\item Quantitatively, we move from 2244 reconstructed tracks to 2436 over 239852 selected trigger events in run 21476, so a gain of 8.55\%
+    \end{itemize}
+
+    \centering
+    \vspace{0.2cm}
+
+    {   \setlength{\tabcolsep}{2pt}
+        \renewcommand{\arraystretch}{0.5}
+        \begin{tabular}{cc}
+            \includegraphics[width=0.48\linewidth]{figures/time-vs-adc-before-adc-correction.pdf} &
+            \includegraphics[width=0.48\linewidth]{figures/time-vs-adc-after-adc-correction.pdf} \\
+            before & after \\
+        \end{tabular}
+    }
+
+\end{frame}
+
+\begin{frame}{Validation - Comparison with ToT}
+    \begin{itemize}
+        \item Our slope-based approach has been compared with the usual time over threshold (ToT) method
+            \begin{itemize}
+                \item Principle: when the signal reaches the saturation plateau, the time spent above the threshold increases with the amplitude of the signal
+                \item We select complete waveforms between 1800 ADC and 3500 ADC
+                \item We compare their ToT and their slope to their known amplitude
+            \end{itemize}
+        \item \textit{\textbf{(i)}} The ToT versus ADC is not linear, \textit{\textbf{(ii)}} it is more precise than the slope at low ADC, \textit{\textbf{(iii)}} but the resolution increases with the ADC while it is almost constant in the slope method
+    \end{itemize}
+
+    \centering
+    \vspace{0.2cm}
+
+    {   \setlength{\tabcolsep}{2pt}
+        \begin{tabular}{cc}
+            \includegraphics[width=0.48\linewidth]{figures/validation-tot-vs-adc.pdf} &
+            \includegraphics[width=0.48\linewidth]{figures/validation-slope-vs-adc.pdf} \\
+        \end{tabular}
+    }
+\end{frame}
+
+\begin{frame}{Validation - Comparison with ToT}
+
+    \begin{itemize}
+        \item Due to the linear behavior of the ADC resolution based on the ToT, the resolution at 6000 ADC is expected to be about 685 ADC.
+        \item In contrast, the slope method is more consistent as the maximum resolution is about 250 ADC
+    \end{itemize}
+
+    \centering
+    \vspace{0.2cm}
+
+    \begin{figure}
+        \includegraphics[width=0.65\linewidth]{figures/validation-adc-resolution-vs-method.pdf}
+    \end{figure}
+    
+\end{frame}
+
 
 
 
