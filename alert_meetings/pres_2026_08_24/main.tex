@@ -26,7 +26,7 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \title{Time reconstruction of saturated signals}
-\newcommand{\eventname}{CALCOM meeting}
+\newcommand{\eventname}{ALERT meeting}
 \author{Felix Touchte Codjo}
 \institute{IJCLab}
 \date{\today}
@@ -147,7 +147,7 @@
     
 \end{frame}
 
-\begin{frame}{Time reconstruction}
+\begin{frame}{Time reconstruction 1/2}
     \begin{itemize}
         \item With the corrected amplitude, we can recompute the time
             \begin{itemize}
@@ -172,9 +172,45 @@
         \renewcommand{\arraystretch}{0.5}
         \begin{tabular}{cc}
             \includegraphics[width=0.48\linewidth]{figures/build/isssue-time-of-saturated-signals_decoding.pdf} &
-            \includegraphics[width=0.48\linewidth]{figures/build/isssue-time-of-saturated-signals_decoding_case2.pdf} \\
-            \footnotesize 1/2 ADC below saturation & \footnotesize 1/2 ADC above saturation \\
-            \footnotesize (direct interpolation) & \footnotesize (use the slope to extrapolate)
+                \includegraphics[width=0.48\linewidth]{figures/build/isssue-time-of-saturated-signals_decoding_case2.pdf} \\
+            \footnotesize 1/2 ADC below saturation & 
+                \footnotesize 1/2 ADC below saturation \\
+            \footnotesize (direct interpolation) & 
+                \footnotesize (use the maximum slope to extrapolate)
+        \end{tabular}
+    }
+\end{frame}
+
+\begin{frame}{Time reconstruction 2/2}
+    \begin{itemize}
+        \item With the corrected amplitude, we can recompute the time
+            \begin{itemize}
+                \item We use the time at half the corrected ADC
+                \item However, sometimes even half ADC is above the saturation threshold
+                \item In this case, we extrapolate the signal based on the maximum slope to determine the time at half ADC
+                % \item The error of the estimation is well known and is propagated to the reconstructed time 
+                % \item The big slope of saturated signals make the error on the time very minimal
+                % \item The error on the time can be propagated to the DOCA and provided to the Kalman Filter
+            \end{itemize}
+        %\item 
+    \end{itemize}
+
+    \centering
+    \vspace{0.2cm}
+
+    % \begin{figure}
+    %     \includegraphics[width=0.55\linewidth]{figures/build/isssue-time-of-saturated-signals_decoding.pdf}
+    % \end{figure}
+
+    {   \setlength{\tabcolsep}{2pt}
+        \renewcommand{\arraystretch}{0.5}
+        \begin{tabular}{cc}
+            \includegraphics[width=0.48\linewidth]{figures/build/isssue-time-of-saturated-signals_decoding.pdf} &
+                \includegraphics[width=0.48\linewidth]{figures/build/isssue-time-of-saturated-signals_decoding_case3.pdf} \\
+            \footnotesize 1/2 ADC below saturation & 
+                \footnotesize 1/2 ADC below saturation \\
+            \footnotesize (direct interpolation) & 
+                \footnotesize (use the previous slope to extrapolate)
         \end{tabular}
     }
 \end{frame}
@@ -212,6 +248,25 @@
         \end{tabular}
     }
 
+\end{frame}
+
+\begin{frame}{Pull request}
+    \begin{itemize}
+        \item The pull is ready for review \href{https://github.com/JeffersonLab/coatjava/pull/1397}{\underline{link}}
+        \item Other changes
+            \begin{itemize}
+                \item A waveform qualified 1 cannot be assigned another type later on
+                    \begin{itemize}
+                        \item[$\rightarrow$] Before some of them were requalified as 2, because of their missing trailing edge
+                    \end{itemize}
+                \item The saturation limit move from 3500 to 3600 ADC
+                \item The upper limit of the ADC cut move from 4095 to 1e10
+                    \begin{itemize}
+                        \item[$\rightarrow$] cf. \href{https://clasweb.jlab.org/cgi-bin/ccdb/show_request?request=/calibration/alert/ahdc/raw_hit_cuts:0:default:2026-08-24_06-05-24}{updated CCDB \underline{/calibration/alert/ahdc/raw\_hit\_cuts}}
+                    \end{itemize}
+            \end{itemize}
+    \end{itemize}
+    
 \end{frame}
 
 
