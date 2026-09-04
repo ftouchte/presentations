@@ -21,6 +21,8 @@
 
 - 2026/08/24 -- [Time reconstruction of saturated signals - results - ready for pull request](./pres_2026_08_24/build/main.pdf)
 
+- 2026/09/04 -- [Reconstruction status - bug report](./pres_2026_09_04/build/main.pdf)
+
 
 
 
