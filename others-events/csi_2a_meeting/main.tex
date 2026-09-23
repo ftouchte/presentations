@@ -1,0 +1,249 @@
+\documentclass[10pt,aspectratio=43]{beamer}
+
+\usepackage{graphicx}
+\usepackage{tikz}
+\usepackage{xcolor}
+\usepackage{caption}
+\usepackage{subcaption}
+\usepackage{bm}
+\usetikzlibrary{calc} 
+\usepackage{hyperref}
+\hypersetup{
+    colorlinks=true,
+    linkcolor=blue,
+    urlcolor=red
+}
+\usepackage{fontawesome5}
+\usepackage{ulem}
+\usepackage[dvipsnames]{xcolor}
+
+\usetheme{MyStyle}   % loads beamerthemeMyStyle.sty
+\setlength{\columnsep}{0pt}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\title{Rapport de 2ème année de doctorat}
+\newcommand{\eventname}{CSI meeting}
+\author{Felix Touchte Codjo}
+\institute{IJCLab}
+%\date{\today}
+\date{September 28, 2026}
+
+
+\begin{document}
+
+\begin{frame}[plain] % remove header, footer, barre de navigation
+\titlepage
+\end{frame}
+
+%\begin{frame}{Outline}
+%\tableofcontents
+%\end{frame}
+
+\begin{frame}{Features of GPDs}
+    \begin{itemize}
+        \item Correlation between PDF and FF
+        \item 3D imaging in impact parameter space
+        \item Spin puzzle
+        \item Pressure and shear force
+    \end{itemize}
+
+\end{frame}
+
+
+\begin{frame}{Interests of nuclear GPDs}
+    \begin{itemize}
+        \item Access parton GPDs from the nucleus as a whole
+        \item Compare to those obtained in free proton
+        \item Reveal variety of nuclear effects
+            \begin{itemize}
+                \item e.g. modification of the quark confinement size
+                \item e.G. short range correlation
+            \end{itemize}
+        \item Provide new insight into the understanding of the EMC effect
+    \end{itemize}
+
+\end{frame}
+
+
+\begin{frame}{Nuclear GPD with ALERT}
+    \begin{itemize}
+        \item Access quark GPD via DVCS
+        \item In nuclear target : coherent DVCS and incoherent DVCS
+        \item HERMES : first attempt but failed to distinguish coherent and incoherent events
+        \item CLAS eg6 : first DVCS off He4, highlights the benefit of detecting the recoil nucleus
+        \item ALERT : extend eg6 at 12 GeV to cover more phase space
+    \end{itemize}
+
+\end{frame}
+
+
+\begin{frame}{Other ALERT measurements}
+    \begin{itemize}
+        \item DVMP for gluon GPDs
+        \item Investigate EMC effect in SIDIS within the spectator mechanism
+            \begin{itemize}
+                \item $^2\mbox{H}(e,e' \gamma p)X$ -- bound neutron 
+                \item $^4\mbox{He}(e,e' \gamma ^3\mbox{H})X$ -- bound proton
+                \item $^4\mbox{He}(e,e' \gamma ^3\mbox{He})X$ -- bound neutron
+            \end{itemize}
+        \item Tagged DVCS 
+            \begin{itemize}
+                \item $^4\mbox{He}(e,e' \gamma ^3\mbox{H} p)$ -- bound p-DVCS (fully exclusive)
+                \item $^4\mbox{He}(e,e' \gamma ^3\mbox{He} n)$ -- bound n-DVCS (neutron undetected)
+                \item $^2\mbox{H}(e,e' \gamma p)$ -- quasi-free n-DVCS (neutron undetected)
+            \end{itemize}
+    \end{itemize}
+
+\end{frame}
+
+
+\begin{frame}{Experiment at JLab}
+    \begin{itemize}
+        \item CEBAF : 12 GeV polarized beam
+        \item CLAS12 : large acceptance detector help to cover large phase space
+        \item Need a new detector to achieve the physics program
+        \item The default setup can only detect $p > 250$ MeV/c in the central region
+        \item The previous RTPC
+            \begin{itemize}
+                \item Limited PID capabilities for the detection of $^3\mbox{He}$ and $^3\mbox{H}$
+            \end{itemize}
+        
+    \end{itemize}
+    
+\end{frame}
+
+
+\begin{frame}{ALERT detector}
+    \begin{itemize}
+        \item Technical requirements of the new detector
+            \begin{itemize}
+                \item Kinematics range: $70 < p < 400$ MeV/c, $\theta > 45^\circ$
+                \item Replace the MVT and CVT located inside a 5T solenoid magnet
+                \item Need to be transparent for the particle to be detected by CLAS
+            \end{itemize}
+        \item Solution ALERT = AHDC + ATOF
+        \item The design makes ALERT fast and can be added in the trigger
+    \end{itemize}
+    
+\end{frame}
+
+
+\begin{frame}{ALERT run period}
+    \begin{itemize}
+        \item From April 2025 to September 2025
+        \item Summary (HV, event rate, nominal beam current)
+        \item Successful data taking
+        \item Transition to the ongoing software development and data calibration
+    \end{itemize}
+    
+\end{frame}
+
+
+\begin{frame}{Decoding -- Waveform classification}
+    \begin{itemize}
+        \item 
+    \end{itemize}
+    
+\end{frame}
+
+
+\begin{frame}{Decoding -- Pulse analysis}
+    \begin{itemize}
+        \item ...
+    \end{itemize}
+    
+\end{frame}
+
+\begin{frame}{Decoding -- Saturated signals}
+    \begin{itemize}
+        \item ...
+    \end{itemize}
+    
+\end{frame}
+
+\begin{frame}{Hit selection}
+    \begin{itemize}
+        \item wfType $\leq 2$ and fiducial cuts
+        \item Event display before and after cuts
+    \end{itemize}
+    
+\end{frame}
+
+
+\begin{frame}{Track finding -- track fitting}
+    \begin{itemize}
+        \item MLP/GNN for track finding
+        \item Kalman Filter for track fitting
+    \end{itemize}
+    
+\end{frame}
+
+
+\begin{frame}{Calibration}
+    \begin{itemize}
+        \item First time to distance
+        \item Work on the automatization of the time to distance (layer by layer)
+    \end{itemize}
+    
+\end{frame}
+
+
+\begin{frame}{Alignment}
+    \begin{itemize}
+        \item Alignment
+    \end{itemize}
+    
+\end{frame}
+
+
+\begin{frame}{Simulation}
+    \begin{itemize}
+        \item 
+    \end{itemize}
+    
+\end{frame}
+
+
+\begin{frame}{Issues fixed -- Wire swaps}
+    \begin{itemize}
+        \item 
+    \end{itemize}
+    
+\end{frame}
+
+\begin{frame}{Status of the reconstruction}
+    \begin{itemize}
+        \item Particle identification
+        \item Part of the reconstruction that can be improved
+    \end{itemize}
+\end{frame}
+
+
+\begin{frame}{Plan for the final year}
+    \begin{itemize}
+        \item 
+    \end{itemize}
+\end{frame}
+
+
+\begin{frame}{Summary}
+    \begin{itemize}
+        \item 
+    \end{itemize}
+\end{frame}
+
+
+
+
+
+
+
+
+
+\end{document}
+
+
