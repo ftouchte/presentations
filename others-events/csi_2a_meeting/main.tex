@@ -56,7 +56,7 @@
 
 \begin{frame}{Nuclear GPDs}
     \begin{itemize}
-        \item The Generalized Parton Distributions (GPDs) contains combines the notion of PDFs and FFs, along with their correlations
+        \item The Generalized Parton Distributions (GPDs) combines the notion of PDFs and FFs, along with their correlations
         %\item The higher moments of GPDs are related
         % \item They are successful in describing the 
         % \begin{itemize}
@@ -64,7 +64,7 @@
         %     \item Spin puzzle
         %     \item Distribution of pressure and shear force
         % \end{itemize}
-        \item We can access GPDs from a free proton or from a nucleus as a whole
+        \item We can access GPDs off the free proton or off a nucleus as a whole
         \item A direct comparison of these distributions can reveal variety of nuclear effects
             \begin{itemize}
                 \item \textit{e.g.} modification of the quark confinement size, short range correlation
@@ -76,7 +76,9 @@
     \centering
     \vspace{0.3cm}
 
-    \includegraphics[width=0.5\linewidth]{figures/emc_effect.png}
+    \includegraphics[width=0.45\linewidth]{figures/gpd_3D_imaging.png}
+    \includegraphics[width=0.45\linewidth]{figures/emc_effect.png}
+
 
 \end{frame}
 
@@ -98,7 +100,7 @@
                 \begin{itemize}
                     \item The recoil nucleus was detected
                     \item Coherent and incoherent channels isolated
-                    \item The measured BSA is twice the one measured on the free proton
+                    \item The coherent BSA is twice the one measured on the free proton
                 \end{itemize}
             %\item ALERT : extend eg6 at 12 GeV to cover more phase space
         \end{itemize}
@@ -135,30 +137,49 @@
 % \end{frame}
 
 
-\begin{frame}{ALERT detector}
+\begin{frame}{ALERT experiment}
     \begin{itemize}
-        \item Technical requirements of the new detector
+        \item ALERT is an extension of the CLAS eg6 at higher luminosity and 12 GeV
+        \item It based on a new detector, A Low Energy Recoil Tracker
             \begin{itemize}
+                \item Along with the $^4\mbox{He}$, identify the two isobares $^3\mbox{He}$ et $^3\mbox{H}$
                 \item Kinematics range: $70 < p < 400$ MeV/c, $\theta > 45^\circ$
-                \item Replace the MVT and CVT located inside a 5T solenoid magnet
-                \item Need to be transparent for the particle to be detected by CLAS
+                \item Location inside a 5T solenoid magnet
+                \item Need to be transparent for the particles to be detected by CLAS
             \end{itemize}
-        \item Solution ALERT = AHDC + ATOF
-        \item The design makes ALERT fast : luminosity
-        \item Identify the differents isotopes : H3, He3
+        \item ALERT is a combination of a drift chamber (AHDC) and an array of scintillators (ATOF)
+        % \item The design makes ALERT fast : luminosity
+        % \item Identify the differents isotopes : H3, He3
     \end{itemize}
+
+    \vspace{0.3cm}
+    \centering
+    \includegraphics[width=0.54\linewidth]{figures/alert_design_annotated.pdf}
     
 \end{frame}
 
 
 \begin{frame}{ALERT run period}
     \begin{itemize}
-        \item From April 2025 to September 2025
+        \item The data taking was from April 2025 to September 2025
         \item Summary (HV, event rate, nominal beam current)
         \item Successful data taking
         \item Transition to the ongoing software development and data calibration
         \item Ce que j'ai fait
     \end{itemize}
+
+    \vspace{0.3cm}
+    \centering
+    
+
+    \begin{minipage}{0.37\textwidth}
+        \begin{itemize}
+            \item tt
+        \end{itemize}
+    \end{minipage}
+    \begin{minipage}{0.6\textwidth}
+        \includegraphics[width=\linewidth]{figures/HighResolutionBeamAccumulatedChargeRatio1.5.png}
+    \end{minipage}
     
 \end{frame}
 
@@ -189,7 +210,7 @@
                     \item Kalman Filter*
                 \end{itemize}
             \item Association AHDC track with ATOF hit
-            \item PID
+            \item Particle identification
         \end{itemize}
     \end{minipage}
     \begin{minipage}{0.48\textwidth}
@@ -208,7 +229,7 @@
             \item Simulation
                 \begin{itemize}
                     \item Digitization*
-                    \item Background 
+                    \item Background merging
                 \end{itemize}
         \end{itemize}
     \end{minipage}
