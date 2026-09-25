@@ -56,6 +56,7 @@
 
 \begin{frame}{Nuclear GPDs}
     \begin{itemize}
+        \item The Generalized Parton Distributions (GPDs) are structure functions
         \item Access parton GPDs from the nucleus as a whole
         \item Compare to those obtained in free proton
         \item Reveal variety of nuclear effects
@@ -106,7 +107,8 @@
                 \item Need to be transparent for the particle to be detected by CLAS
             \end{itemize}
         \item Solution ALERT = AHDC + ATOF
-        \item The design makes ALERT fast and can be added in the trigger
+        \item The design makes ALERT fast : luminosity
+        \item Identify the differents isotopes : H3, He3
     \end{itemize}
     
 \end{frame}
@@ -118,6 +120,7 @@
         \item Summary (HV, event rate, nominal beam current)
         \item Successful data taking
         \item Transition to the ongoing software development and data calibration
+        \item Ce que j'ai fait
     \end{itemize}
     
 \end{frame}
@@ -149,6 +152,7 @@
                     \item Kalman Filter*
                 \end{itemize}
             \item Association AHDC track with ATOF hit
+            \item PID
         \end{itemize}
     \end{minipage}
     \begin{minipage}{0.48\textwidth}
@@ -164,10 +168,53 @@
                     \item Phi alignment**
                     \item Beamline orientation
                 \end{itemize}
+            \item Simulation
+                \begin{itemize}
+                    \item Digitization*
+                    \item Background 
+                \end{itemize}
         \end{itemize}
     \end{minipage}
     
 
+\end{frame}
+
+
+\begin{frame}{Waveform classification}
+    \begin{itemize}
+        \item Different WF, different traitments
+        %\item Noisy signals in AHDC have a repeated pattern
+    \end{itemize}
+
+    \centering
+    \vspace{0.3cm}
+    {
+        \footnotesize
+        \begin{tabular}{l|l|l}
+            wfType 6 $\rightarrow$ too short & wfType 5 $\rightarrow$ decreasing & wfType 4 $\rightarrow$ small ToT \\
+            wfType 3 $\rightarrow$ pileup & wfType 2 $\rightarrow$ missing trailing edge & wfType 1 $\rightarrow$ saturated \\
+            wfType 0 $\rightarrow$ normal & &
+        \end{tabular}
+    }
+
+    \vspace{0.3cm}
+    {
+        \setlength{\tabcolsep}{1pt}
+        \begin{tabular}{cccc}
+            \includegraphics[width=0.24\linewidth]{figures/wf6_short.pdf} &
+                \includegraphics[width=0.24\linewidth]{figures/wf5_decreasing.pdf} &
+                    \includegraphics[width=0.24\linewidth]{figures/wf4_bad_tot.pdf} & 
+                        \includegraphics[width=0.24\linewidth]{figures/wf3_pileup.pdf} \\
+            \includegraphics[width=0.24\linewidth]{figures/wf2_bad_trailing_edge.pdf} &
+                \includegraphics[width=0.24\linewidth]{figures/wf1_saturated.pdf} &
+                    \includegraphics[width=0.24\linewidth]{figures/wf0_normal.pdf} &
+        \end{tabular}
+    }
+
+    \begin{itemize}
+        \item Only signals with a good leading edge time are relevant (wfType $\leq$ 2)
+    \end{itemize}
+    
 \end{frame}
 
 
@@ -212,6 +259,7 @@
                     \item We correct the amplitude of saturated signals using this trend
                 \end{itemize}
             \item With the corrected amplitude, we recompute the time at 1/2 amplitude
+            \item This method has been compared with a method based on the time over threshold
         \end{itemize}
     \end{minipage}
     \begin{minipage}{0.4\linewidth}
@@ -221,8 +269,8 @@
     \vspace{0.3cm}
     \centering    
     \begin{tabular}{cc}
-        \includegraphics[width=0.4\linewidth]{figures/build/decoding_saturated_signals_normal.pdf} &
-            \includegraphics[width=0.4\linewidth]{figures/build/decoding_saturated_signals_above_threshold.pdf} \\
+        \includegraphics[width=0.38\linewidth]{figures/build/decoding_saturated_signals_normal.pdf} &
+            \includegraphics[width=0.38\linewidth]{figures/build/decoding_saturated_signals_above_threshold.pdf} \\
         \footnotesize 1/2 ADC below threshold & 
             \footnotesize 1/2 ADC above threshold
     \end{tabular}
@@ -232,48 +280,14 @@
 \end{frame}
 
 
-\begin{frame}{Waveform classification}
-    \begin{itemize}
-        \item Noisy signals in AHDC have a repeated pattern
-        \item Only signals with a good leading edge time are relevant (wfType $\leq$ 2)
-    \end{itemize}
-
-    \centering
-    \vspace{0.3cm}
-    {
-        \footnotesize
-        \begin{tabular}{l|l|l}
-            wfType 6 $\rightarrow$ too short & wfType 5 $\rightarrow$ decreasing & wfType 4 $\rightarrow$ small ToT \\
-            wfType 3 $\rightarrow$ pileup & wfType 2 $\rightarrow$ missing trailing edge & wfType 1 $\rightarrow$ saturated \\
-            wfType 0 $\rightarrow$ normal & &
-        \end{tabular}
-    }
-
-    \vspace{0.3cm}
-    {
-        \setlength{\tabcolsep}{1pt}
-        \begin{tabular}{cccc}
-            \includegraphics[width=0.24\linewidth]{figures/wf6_short.pdf} &
-                \includegraphics[width=0.24\linewidth]{figures/wf5_decreasing.pdf} &
-                    \includegraphics[width=0.24\linewidth]{figures/wf4_bad_tot.pdf} & 
-                        \includegraphics[width=0.24\linewidth]{figures/wf3_pileup.pdf} \\
-            \includegraphics[width=0.24\linewidth]{figures/wf2_bad_trailing_edge.pdf} &
-                \includegraphics[width=0.24\linewidth]{figures/wf1_saturated.pdf} &
-                    \includegraphics[width=0.24\linewidth]{figures/wf0_normal.pdf} &
-        \end{tabular}
-    }
-    
-\end{frame}
 
 
-\begin{frame}{From hit selection to track fitting}
+
+\begin{frame}{Hit selection}
     \begin{itemize}
         \item Selection criteria (wfType $\leq$ 2 and time cuts)
         \item The occupancy in the AHDC is much lower after the hit selection
         \item It simplifies the task of the track finder
-        \item The remaining hits are clustered into track candidates
-        \item The track candidates are fitted
-        \item The tracking is combined with the ATOF to recover the position and the momentum at the interaction point
     \end{itemize}
 
     \vspace{0.3cm}
@@ -288,13 +302,13 @@
 
 \begin{frame}{Time-to-distance calibration}
     \begin{itemize}
-        \item It converts the reconstructed time into distance
-        \item From the first time-to-distance to the current one
-        %\item 
-            % \begin{itemize}
-            %     \item Layer by layer
-            % \end{itemize}
-        %\item Work on the automatization of the time to distance (layer by layer)
+        \item 
+        % \item The improvement of the residual resolution benefit from works on the Kalman Filter
+        %     \begin{itemize}
+        %         \item Make it recursive : KF1 $\rightarrow$ hit cleaning $\rightarrow$ KF2
+        %         \item Add electron and ATOF hits
+        %         \item Increase the number of iterations
+        %     \end{itemize}
     \end{itemize}
 
     
@@ -318,16 +332,28 @@
 
 \begin{frame}{Alignment}
     \begin{itemize}
-        \item Alignment
+        \item Extract from data the relative disposition of the detector components
+        \item We use elastic events for which the reconstructed track and the expected track can be compared
+            \begin{itemize}
+                \item Phi orientation (by layer or by wire)  $\rightarrow$ residual\_LR
+                \item Z alignment with respect to CLAS $\rightarrow$ vertex shift over the run period
+            \end{itemize}
     \end{itemize}
-    
-\end{frame}
 
+    \vspace{0.2cm}
 
-\begin{frame}{Simulation}
-    \begin{itemize}
-        \item 
-    \end{itemize}
+    \begin{minipage}{0.54\linewidth}
+        \includegraphics[height=2.5cm,width=3.2cm]{figures/layer22_without_alignment.png}
+        \includegraphics[height=2.5cm,width=3.2cm]{figures/layer22_with_alignment.png}
+        
+        \vspace{0.2cm}
+        
+        \includegraphics[height=2.5cm,width=3.2cm]{figures/vz_shift_2gev.pdf}
+        \includegraphics[height=2.5cm,width=3.2cm]{figures/vz_shift_10gev.pdf}
+    \end{minipage}
+    \begin{minipage}{0.45\linewidth}
+        \includegraphics[width=\linewidth]{figures/build/residual_LR_concept.pdf}
+    \end{minipage}
     
 \end{frame}
 
