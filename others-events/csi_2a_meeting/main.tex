@@ -56,20 +56,16 @@
 
 \begin{frame}{Nuclear GPDs}
     \begin{itemize}
-        \item The Generalized Parton Distributions (GPDs) combines the notion of PDFs and FFs, along with their correlations
-        %\item The higher moments of GPDs are related
-        % \item They are successful in describing the 
-        % \begin{itemize}
-        %     \item 3D imaging in impact parameter space
-        %     \item Spin puzzle
-        %     \item Distribution of pressure and shear force
-        % \end{itemize}
+        \item The Generalized Parton Distributions (GPDs) combine the notion of PDFs and FFs, along with their correlations 
         \item We can access GPDs off the free proton or off a nucleus as a whole
+        \begin{itemize}
+            \item 3D imaging, spin decomposition, distribution of pressure and shear forces
+        \end{itemize}
         \item A direct comparison of these distributions can reveal variety of nuclear effects
             \begin{itemize}
                 \item \textit{e.g.} modification of the quark confinement size, short range correlation
             \end{itemize}
-        \item This will provide new insight into the understanding of the EMC effect
+        \item This will provide new insights into the understanding of the EMC effect
     \end{itemize}
 
 
@@ -88,7 +84,7 @@
     \begin{minipage}{0.62\linewidth}
         \begin{itemize}
             %\item We can access quark GPDs in DVCS
-            \item For a nuclear target the DVCS can be coherent or incoherent channels
+            \item For a nuclear target, the DVCS can be coherent or incoherent
             \item HERMES measurements on various targets
                 \begin{itemize}
                     \item The recoil nuclei were not detected
@@ -99,7 +95,7 @@
             \item CLAS eg6 : first coherent DVCS off He4
                 \begin{itemize}
                     \item The recoil nucleus was detected
-                    \item Coherent and incoherent channels isolated
+                    \item Coherent and incoherent channels were isolated
                     \item The coherent BSA is twice the one measured on the free proton
                 \end{itemize}
             %\item ALERT : extend eg6 at 12 GeV to cover more phase space
@@ -142,10 +138,10 @@
         \item ALERT is an extension of the CLAS eg6 at higher luminosity and 12 GeV
         \item It based on a new detector, A Low Energy Recoil Tracker
             \begin{itemize}
-                \item Along with the $^4\mbox{He}$, identify the two isobares $^3\mbox{He}$ et $^3\mbox{H}$
-                \item Kinematics range: $70 < p < 400$ MeV/c, $\theta > 45^\circ$
-                \item Location inside a 5T solenoid magnet
-                \item Need to be transparent for the particles to be detected by CLAS
+                \item Along with the $^4\mbox{He}$, identify the two isobars $^3\mbox{He}$ et $^3\mbox{H}$
+                \item With kinematics: $70 < p < 400$ MeV/c, $\theta > 45^\circ$
+                \item To be placed inside a 5T solenoid magnet
+                \item To be transparent to the particles detected by CLAS
             \end{itemize}
         \item ALERT is a combination of a drift chamber (AHDC) and an array of scintillators (ATOF)
         % \item The design makes ALERT fast : luminosity
@@ -161,23 +157,39 @@
 
 \begin{frame}{ALERT run period}
     \begin{itemize}
-        \item The data taking was from April 2025 to September 2025
-        \item Summary (HV, event rate, nominal beam current)
-        \item Successful data taking
-        \item Transition to the ongoing software development and data calibration
-        \item Ce que j'ai fait
+        \item The run period took place from April 2025 to September 2025 at JLab
+        \vspace{0.3cm}
+        \item Run summary
+            \begin{itemize}
+                \item Targets: helium, deuterium, hydrogen
+                \item Beam energies: 2.2 GeV, 6.4 GeV, 10.6 GeV
+                \item Beam current: up to 325 nA
+                \item Event rate: 10 kHz
+                \item $6.42 \times 10^{10}$ trigger events collected
+            \end{itemize}
+        
     \end{itemize}
 
     \vspace{0.3cm}
     \centering
     
-
-    \begin{minipage}{0.37\textwidth}
+    \begin{minipage}[t]{0.38\textwidth}
+        \vspace{0pt}
         \begin{itemize}
-            \item tt
+            \item My activities at JLab
+                \begin{itemize}
+                    \item Data monitoring
+                    \item On-call detector expert
+                    \item Target change
+                    \item Target purge
+                \end{itemize}
+            \vspace{0.2cm}
+            \item The data taking was a success
         \end{itemize}
+        
     \end{minipage}
-    \begin{minipage}{0.6\textwidth}
+    \begin{minipage}[t]{0.6\textwidth}
+        \vspace{0pt}
         \includegraphics[width=\linewidth]{figures/HighResolutionBeamAccumulatedChargeRatio1.5.png}
     \end{minipage}
     
@@ -209,7 +221,7 @@
                     \item Helix fitter
                     \item Kalman Filter*
                 \end{itemize}
-            \item Association AHDC track with ATOF hit
+            \item Hit matching : AHDC $\rightleftarrows$ ATOF
             \item Particle identification
         \end{itemize}
     \end{minipage}
@@ -217,8 +229,8 @@
         \begin{itemize}
             \item Calibration
                 \begin{itemize}
-                    \item Time calibration
-                    \item Time-to-distance calibration*
+                    \item Time
+                    \item Time-to-distance*
                 \end{itemize}
             \item Alignment
                 \begin{itemize}
@@ -240,18 +252,25 @@
 
 \begin{frame}{Waveform classification}
     \begin{itemize}
-        \item Different WF, different traitments
-        %\item Noisy signals in AHDC have a repeated pattern
+        \item The signals recorded by the AHDC have various shapes
+        \item These different waveforms need specific treatments
+        \item We gather them into seven categories
     \end{itemize}
 
     \centering
-    \vspace{0.3cm}
+    \vspace{0.15cm}
     {
         \footnotesize
         \begin{tabular}{l|l|l}
-            wfType 6 $\rightarrow$ too short & wfType 5 $\rightarrow$ decreasing & wfType 4 $\rightarrow$ small ToT \\
-            wfType 3 $\rightarrow$ pileup & wfType 2 $\rightarrow$ missing trailing edge & wfType 1 $\rightarrow$ saturated \\
-            wfType 0 $\rightarrow$ normal & &
+            wfType 6 $\rightarrow$ too short & 
+                wfType 3 $\rightarrow$ pileup (ongoing work) & 
+                    wfType 0 $\rightarrow$ normal \\
+            wfType 5 $\rightarrow$ decreasing & 
+                wfType 2 $\rightarrow$ missing trailing edge & 
+                     \\
+            wfType 4 $\rightarrow$ small ToT & 
+                wfType 1 $\rightarrow$ saturated & 
+                     \\
         \end{tabular}
     }
 
@@ -278,7 +297,7 @@
 
 \begin{frame}{Pulse decoding}
     \begin{itemize}
-        \item Information extracted from a signal
+        \item Procedure for extracting the time
                 \begin{itemize} \footnotesize
                     \item Baseline $\rightarrow$ estimated using the 4 first samples
                     \item Amplitude $\rightarrow$ after baseline subtraction, average of 3 samples around the peak
@@ -312,12 +331,12 @@
 
     \begin{minipage}{0.56\linewidth}
         \begin{itemize}
-            \item The maximum of the slope of the signal is linearly correlated to the amplitude of non-saturated signals
+            \item The maximum slope of the signal is linearly correlated to the amplitude for non-saturated signals
                 \begin{itemize}
-                    \item We correct the amplitude of saturated signals using this trend
+                    \item We extrapolate the amplitude of saturated signals using this trend
                 \end{itemize}
             \item With the corrected amplitude, we recompute the time at 1/2 amplitude
-            \item This method has been compared with a method based on the time over threshold
+            \item We chose this method after comparing it to the one based on the time over threshold
         \end{itemize}
     \end{minipage}
     \begin{minipage}{0.4\linewidth}
@@ -343,7 +362,7 @@
 
 \begin{frame}{Hit selection}
     \begin{itemize}
-        \item Selection criteria (wfType $\leq$ 2 and time cuts)
+        \item Selection criteria: wfType $\leq$ 2 and time cuts
         \item The occupancy in the AHDC is much lower after the hit selection
         \item It simplifies the task of the track finder
     \end{itemize}
@@ -355,25 +374,35 @@
     \hspace{0.1cm}
     \includegraphics[width=0.38\linewidth]{figures/EventDisplay_for_waveformPerLayer_after_cuts.pdf}
     
+    \vspace{0.15cm}
+    {
+        \footnotesize
+        Event display: 325 nA, 10.6 GeV, $^4\mbox{He}$ target
+    }
+    
 \end{frame}
 
 
 \begin{frame}{Time-to-distance calibration}
     \begin{itemize}
-        \item 
-        % \item The improvement of the residual resolution benefit from works on the Kalman Filter
-        %     \begin{itemize}
-        %         \item Make it recursive : KF1 $\rightarrow$ hit cleaning $\rightarrow$ KF2
-        %         \item Add electron and ATOF hits
-        %         \item Increase the number of iterations
-        %     \end{itemize}
+        \item The AHDC is a Time Projection Chamber
+        %\item The drift time of the electrons created by ionization of the medium after the passage of a charged particle encodes the position of its track with respect to a given wire
+        \item The position is obtained by means of the time-to-distance
+        \item The expression of the time-to-distance depends on several conditions that vary over the run period: high-voltage, medium composition, magnetic field
+        %\item We use an iterative procedure based on the minimization of the residuals
     \end{itemize}
 
     
-    \vspace{0.3cm}
+    \vspace{0.2cm}
     %\centering
 
     \begin{minipage}{0.54\linewidth}
+
+        \begin{itemize}
+            \item We use an iterative procedure based on the minimization of the residuals
+        \end{itemize}
+
+        \vspace{0.2cm}
 
         \includegraphics[height=2.5cm,width=3.2cm]{figures/time2distance.pdf}
         \includegraphics[height=2.5cm,width=3.2cm]{figures/residual_post_time2distance_calib.pdf}
@@ -418,8 +447,23 @@
 
 \begin{frame}{Issues fixed -- Wire swaps}
     \begin{itemize}
-        \item 
+        \item We found some issues in the translation table of the AHDC
+        \item Some wire residual distributions were non-centered or had unexpected shapes
+        \item We found that they were the result of wire swaps as illustrated in the wire occupancy versus the electron phi in elastic events
+        \item In total, four pairs of wires were reversed
     \end{itemize}
+
+    \vspace{0.2cm}
+    \centering
+
+    \includegraphics[width=0.3\linewidth]{figures/L22W42_old_tt.pdf}
+    \includegraphics[width=0.3\linewidth]{figures/L22W43_old_tt.pdf}
+    \includegraphics[width=0.3\linewidth]{figures/wire_inversion_layer22_old_tt.png}
+
+    \includegraphics[width=0.3\linewidth]{figures/L22W42_new_tt.pdf}
+    \includegraphics[width=0.3\linewidth]{figures/L22W43_new_tt.pdf}
+    \includegraphics[width=0.3\linewidth]{figures/wire_inversion_layer22_new_tt.png}
+
     
 \end{frame}
 
