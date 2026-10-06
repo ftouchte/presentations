@@ -1,0 +1,504 @@
+\documentclass[10pt,aspectratio=43]{beamer}
+
+\usepackage{graphicx}
+\usepackage{tikz}
+\usepackage{xcolor}
+\usepackage{caption}
+\usepackage{subcaption}
+\usepackage{bm}
+\usetikzlibrary{calc} 
+\usepackage{hyperref}
+\hypersetup{
+    colorlinks=true,
+    linkcolor=blue,
+    urlcolor=red
+}
+\usepackage{fontawesome5}
+\usepackage{ulem}
+\usepackage[dvipsnames]{xcolor}
+
+\usetheme{MyStyle}   % loads beamerthemeMyStyle.sty
+\setlength{\columnsep}{0pt}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\title{Coherent DVCS off $^4\mbox{He}$ with ALERT and CLAS at JLab}
+\newcommand{\eventname}{GDR QCD Nantes 2026}
+\author{Felix Touchte Codjo}
+\institute{IJCLab}
+%\date{\today}
+\date{September 28, 2026}
+
+
+\begin{document}
+
+\begin{frame}[plain] % remove header, footer, barre de navigation
+\titlepage
+\end{frame}
+
+%\begin{frame}{Outline}
+%\tableofcontents
+%\end{frame}
+
+% \begin{frame}{Features of GPDs}
+%     \begin{itemize}
+%         \item Correlation between PDF and FF
+%         \item 3D imaging in impact parameter space
+%         \item Spin puzzle
+%         \item Pressure and shear force
+%     \end{itemize}
+
+% \end{frame}
+
+
+\begin{frame}{Nuclear GPDs}
+    \begin{itemize}
+        \item The Generalized Parton Distributions (GPDs) combine the notion of PDFs and FFs, along with their correlations 
+            % \begin{itemize}
+            %     \item 3D imaging, spin puzzle, distribution of pressure and shear forces
+            % \end{itemize}
+        \item We can access GPDs off the free proton or off a nucleus
+        \item A direct comparison of these distributions can reveal a variety of nuclear effects
+            \begin{itemize}
+                \item \textit{e.g.} modification of the quark confinement size, short range correlation
+            \end{itemize}
+        \item This will provide new insights into the understanding of the EMC effect
+    \end{itemize}
+
+
+    \centering
+    \vspace{0.3cm}
+
+    \includegraphics[width=0.45\linewidth]{figures/gpd_3D_imaging.png}
+    \includegraphics[width=0.45\linewidth]{figures/emc_effect.png}
+
+
+\end{frame}
+
+
+\begin{frame}{Nuclear coherent DVCS}
+
+    \begin{minipage}{0.62\linewidth}
+        \begin{itemize}
+            \item We can access quark GPDs in DVCS
+            \item For a nuclear target, the DVCS can be coherent or incoherent
+            \item First measurements by HERMES
+                \begin{itemize}
+                    \item The recoil nuclei were not detected
+                    \item $-t$ based threshold to separate the channels
+                    \item Measurements affected by large uncertainties
+                    \item No nuclear dependence of the BSA found
+                \end{itemize}
+            \item CLAS eg6 : first coherent DVCS off $^4\mbox{He}$
+                \begin{itemize}
+                    \item The recoil nucleus was detected
+                    \item Coherent and incoherent channels were isolated
+                    \item The coherent BSA is twice the one measured on the free proton
+                \end{itemize}
+        \end{itemize}
+    \end{minipage}
+    \begin{minipage}{0.35\linewidth}
+        
+        \includegraphics[width=\linewidth]{figures/coherent_dvcs.png}
+
+        \vspace{0.2cm}
+
+        \includegraphics[width=0.9\linewidth]{figures/hermes_t_based_selection_cuts.png}
+    \end{minipage}
+
+    %\vspace{0.2cm}
+    \centering
+    \includegraphics[width=0.63\linewidth]{figures/coherent_dvcs_bsa.png}
+
+\end{frame}
+
+
+% \begin{frame}{Experiment at JLab}
+%     \begin{itemize}
+%         \item CEBAF : 12 GeV polarized beam
+%         \item CLAS12 : large acceptance detector help to cover large phase space
+%         \item Need a new detector to achieve the physics program
+%         \item The default setup can only detect $p > 250$ MeV/c in the central region
+%         \item The previous RTPC
+%             \begin{itemize}
+%                 \item Limited PID capabilities for the detection of $^3\mbox{He}$ and $^3\mbox{H}$
+%             \end{itemize}
+        
+%     \end{itemize}
+    
+% \end{frame}
+
+
+\begin{frame}{ALERT experiment}
+    \begin{itemize}
+        \item ALERT is an extension of the CLAS eg6 at higher luminosity and 12 GeV
+        \item It based on a new detector, A Low Energy Recoil Tracker
+            \begin{itemize}
+                \item Along with the $^4\mbox{He}$, identify the two isobars $^3\mbox{He}$ et $^3\mbox{H}$
+                \item With kinematics: $70 < p < 400$ MeV/c, $\theta > 45^\circ$
+                \item To be placed inside a 5T solenoid magnet
+                \item To be transparent to the particles detected by CLAS
+            \end{itemize}
+        \item ALERT is a combination of a drift chamber (AHDC) and an array of scintillators (ATOF)
+        % \item The design makes ALERT fast : luminosity
+        % \item Identify the differents isotopes : H3, He3
+    \end{itemize}
+
+    \vspace{0.3cm}
+    \centering
+    \includegraphics[width=0.45\linewidth]{figures/alert_design_annotated.pdf}
+    \hspace{0.3cm}
+    \includegraphics[width=0.38\linewidth]{figures/clas12-with-alert.png}
+    
+\end{frame}
+
+
+\begin{frame}{ALERT run period}
+    \begin{itemize}
+        \item The run period took place from April 2025 to September 2025 at JLab
+        \vspace{0.3cm}
+        \item Run summary
+            \begin{itemize}
+                \item Targets: helium, deuterium, hydrogen
+                \item Beam energies: 2.2 GeV, 6.4 GeV, 10.6 GeV
+                \item Beam current: up to 325 nA
+                \item Event rate: 10 kHz
+                \item $6.42 \times 10^{10}$ trigger events collected
+            \end{itemize}
+        
+    \end{itemize}
+
+    \vspace{0.3cm}
+    \centering
+    
+    \begin{minipage}[t]{0.38\textwidth}
+        \vspace{0pt}
+        \begin{itemize}
+            \item My activities at JLab
+                \begin{itemize}
+                    \item Data monitoring
+                    \item On-call detector expert
+                    \item Target change
+                    \item Target purge
+                \end{itemize}
+            \vspace{0.2cm}
+            \item The data taking was a success
+        \end{itemize}
+        
+    \end{minipage}
+    \begin{minipage}[t]{0.6\textwidth}
+        \vspace{0pt}
+        \includegraphics[width=\linewidth]{figures/HighResolutionBeamAccumulatedChargeRatio1.5.png}
+    \end{minipage}
+    
+\end{frame}
+
+
+\begin{frame}{Overview of the ALERT reconstruction}
+
+    After the end of the run period, efforts mainly focus on the finalization of the reconstruction software and the calibration of the data
+
+    % \begin{itemize}
+    %     \item[] After the end of the run period, efforts mainly focuses of the finalization of the reconstruction software and the calibration of the data
+    % \end{itemize}
+
+    \vspace{0.4cm}
+    \centering
+
+    \begin{minipage}{0.45\linewidth}
+        \begin{itemize}
+            \item Decoding
+                \begin{itemize}
+                    \item From raw data to waveform
+                    \item Waveform processing**
+                \end{itemize}
+            \item Hit selection
+                \begin{itemize}
+                    \item Waveform classification**
+                    \item Selection cuts**
+                \end{itemize}
+            \item Track finder
+                \begin{itemize}
+                    \item MLP/GNN
+                \end{itemize}
+            \item Track fitting
+                \begin{itemize}
+                    \item Helix fitter
+                    \item Kalman Filter*
+                \end{itemize}
+            \item Hit matching : AHDC $\rightleftarrows$ ATOF
+            \item Particle identification
+        \end{itemize}
+    \end{minipage}
+    \begin{minipage}{0.45\linewidth}
+        \begin{itemize}
+            \item Calibration
+                \begin{itemize}
+                    \item Time
+                    \item Time-to-distance*
+                \end{itemize}
+            \item Alignment
+                \begin{itemize}
+                    \item Vertex alignment**
+                    \item Phi alignment**
+                    \item Beamline orientation
+                \end{itemize}
+            \item Simulation
+                \begin{itemize}
+                    \item Digitization*
+                    \item Background merging
+                \end{itemize}
+        \end{itemize}
+    \end{minipage}
+    
+
+\end{frame}
+
+
+\begin{frame}{Waveform classification}
+    \begin{itemize}
+        \item The signals recorded by the AHDC have various shapes
+        \item These different waveforms need specific treatments
+        \item We gather them into seven categories
+    \end{itemize}
+
+    \centering
+    \vspace{0.15cm}
+    {
+        \footnotesize
+        \begin{tabular}{lll}
+            wfType 6 $\rightarrow$ too short & 
+                wfType 3 $\rightarrow$ pileup (ongoing work) & 
+                    wfType 0 $\rightarrow$ normal \\
+            wfType 5 $\rightarrow$ decreasing & 
+                wfType 2 $\rightarrow$ missing trailing edge & 
+                     \\
+            wfType 4 $\rightarrow$ small ToT & 
+                wfType 1 $\rightarrow$ saturated & 
+                     \\
+        \end{tabular}
+    }
+
+    \vspace{0.3cm}
+    {
+        \setlength{\tabcolsep}{1pt}
+        \begin{tabular}{cccc}
+            \includegraphics[width=0.24\linewidth]{figures/wf6_short.pdf} &
+                \includegraphics[width=0.24\linewidth]{figures/wf5_decreasing.pdf} &
+                    \includegraphics[width=0.24\linewidth]{figures/wf4_bad_tot.pdf} & 
+                        \includegraphics[width=0.24\linewidth]{figures/wf3_pileup.pdf} \\
+            \includegraphics[width=0.24\linewidth]{figures/wf2_bad_trailing_edge.pdf} &
+                \includegraphics[width=0.24\linewidth]{figures/wf1_saturated.pdf} &
+                    \includegraphics[width=0.24\linewidth]{figures/wf0_normal.pdf} &
+        \end{tabular}
+    }
+
+    \begin{itemize}
+        \item Only signals with a good leading edge time are relevant (wfType $\leq$ 2)
+    \end{itemize}
+    
+\end{frame}
+
+
+% \begin{frame}{Pulse decoding}
+%     \begin{itemize}
+%         \item Procedure for extracting the time
+%                 \begin{itemize} \footnotesize
+%                     \item Baseline $\rightarrow$ estimated using the 4 first samples
+%                     \item Amplitude $\rightarrow$ after baseline subtraction, average of 3 samples around the peak
+%                     \item Leading edge time $\rightarrow$ computed at 1/2 amplitude
+%                     \item Time over threshold $\rightarrow$ computed if the signal has a trailing edge at 1/2 amplitude
+%                 \end{itemize}
+%         \item The leading edge time is well determined for wfType 0 and 2
+%         \item However, the time reconstructed for saturated signals is underestimated using the previous method
+%                 \begin{itemize} \footnotesize
+%                     \item Such bias will impact the reconstruction of $\alpha$ particle
+%                 \end{itemize}
+%     \end{itemize}
+    
+%     \vspace{0.3cm}
+%     \centering
+
+%     \begin{minipage}{0.4\linewidth}
+%         \includegraphics[width=\linewidth]{figures/wf0_normal.pdf} 
+%     \end{minipage}
+%     \begin{minipage}{0.42\linewidth}
+%         \includegraphics[width=\linewidth]{figures/build/adc_of_saturated_signals.pdf} 
+%     \end{minipage}
+
+% \end{frame}
+
+
+\begin{frame}{Decoding of saturated signals}
+
+    \begin{minipage}{0.6\linewidth}
+        \begin{itemize}
+            \item The signals of $\alpha$ particles always saturate
+            \item The time extracted at 1/2 saturated ADC is under-estimated
+                \begin{itemize}
+                    \item It badly impacts the reconstruction
+                \end{itemize}
+            \item To correct for the amplitude, we use the linear correlation of the maximum slope of a non-saturated signal with its amplitude
+            \item With the corrected amplitude, we can recompute the time at 1/2 amplitude
+        \end{itemize}
+
+        \centering
+        \includegraphics[width=0.7\linewidth]{figures/slope_versus_adc_all_signals.pdf} 
+    \end{minipage}
+    \begin{minipage}{0.37\linewidth}
+        \includegraphics[width=\linewidth]{figures/build/adc_of_saturated_signals.pdf}
+
+        \vspace{0.3cm}
+
+        \includegraphics[width=\linewidth]{figures/build/decoding_saturated_signals_normal.pdf}
+
+        \begin{itemize}
+            \item This method has been compared with the one based on the time over threshold
+        \end{itemize}
+    \end{minipage}    
+    
+\end{frame}
+
+\begin{frame}{Hit selection}
+    \begin{itemize}
+        \item Selection criteria: wfType $\leq$ 2 and time cuts
+        \item The occupancy in the AHDC is much lower after the hit selection
+        \item It simplifies the task of the track finder
+    \end{itemize}
+
+    \vspace{0.3cm}
+    \centering
+
+    \includegraphics[width=0.38\linewidth]{figures/EventDisplay_for_waveformPerLayer.pdf}
+    \hspace{0.1cm}
+    \includegraphics[width=0.38\linewidth]{figures/EventDisplay_for_waveformPerLayer_after_cuts.pdf}
+    
+    \vspace{0.15cm}
+    {
+        \footnotesize
+        Event display: 325 nA, 10.6 GeV, $^4\mbox{He}$ target
+    }
+    
+\end{frame}
+
+
+\begin{frame}{Time-to-distance calibration}
+    \begin{itemize}
+        \item The AHDC is a Time Projection Chamber
+        \item The position is obtained by means of the time-to-distance which is subject to calibration over the run period
+    \end{itemize}
+
+    
+    \vspace{0.2cm}
+    %\centering
+
+    \begin{minipage}{0.54\linewidth}
+
+        \begin{itemize}
+            \item We use an iterative procedure based on the minimization of the residuals
+        \end{itemize}
+
+        \vspace{0.2cm}
+
+        \includegraphics[height=2.5cm,width=3.2cm]{figures/time2distance.pdf}
+        \includegraphics[height=2.5cm,width=3.2cm]{figures/residual_post_time2distance_calib.pdf}
+
+        \includegraphics[height=2.5cm,width=3.2cm]{figures/new_t2d.png}
+        \includegraphics[height=2.5cm,width=3.2cm]{figures/residual_from_new_t2d.png}
+    \end{minipage}
+    \begin{minipage}{0.45\linewidth}
+        \includegraphics[width=\linewidth]{figures/build/residual_illustration.pdf}
+    \end{minipage}
+    
+\end{frame}
+
+
+\begin{frame}{Alignment}
+    \begin{itemize}
+        \item Extract from data the relative disposition of the detector components
+        \item We use elastic events for which the reconstructed track and the expected track can be compared
+            \begin{itemize}
+                \item Phi alignment (by layer or by wire)  $\rightarrow$ residual\_LR
+                \item Z alignment with respect to CLAS $\rightarrow$ position scan
+            \end{itemize}
+    \end{itemize}
+
+    \vspace{0.2cm}
+
+    \begin{minipage}{0.54\linewidth}
+        \includegraphics[height=2.5cm,width=3.2cm]{figures/layer22_without_alignment.png}
+        \includegraphics[height=2.5cm,width=3.2cm]{figures/layer22_with_alignment.png}
+        
+        \vspace{0.2cm}
+        
+        \includegraphics[height=2.5cm,width=3.2cm]{figures/vz_shift_2gev.pdf}
+        \includegraphics[height=2.5cm,width=3.2cm]{figures/vz_shift_10gev.pdf}
+    \end{minipage}
+    \begin{minipage}{0.45\linewidth}
+        \includegraphics[width=\linewidth]{figures/build/residual_LR_concept.pdf}
+    \end{minipage}
+    
+\end{frame}
+
+
+\begin{frame}{Issues fixed -- Wire swaps}
+    \begin{itemize}
+        \item We found some issues in the translation table of the AHDC
+        \item Some wire residual distributions were non-centered or had unexpected shapes
+        \item We found that they were the result of wire swaps as illustrated in the wire occupancy versus the electron phi in elastic events
+        \item In total, four pairs of wires were reversed
+    \end{itemize}
+
+    \vspace{0.2cm}
+    \centering
+
+    \includegraphics[width=0.3\linewidth]{figures/L22W42_old_tt.pdf}
+    \includegraphics[width=0.3\linewidth]{figures/L22W43_old_tt.pdf}
+    \includegraphics[width=0.3\linewidth]{figures/wire_inversion_layer22_old_tt.png}
+
+    \includegraphics[width=0.3\linewidth]{figures/L22W42_new_tt.pdf}
+    \includegraphics[width=0.3\linewidth]{figures/L22W43_new_tt.pdf}
+    \includegraphics[width=0.3\linewidth]{figures/wire_inversion_layer22_new_tt.png}
+
+\end{frame}
+
+
+\begin{frame}{Preliminary Beam Spin Asymmetry}
+
+    \begin{itemize}
+        \item All the work on the software and calibration is to prepare for my analysis
+        \item Warnings
+            \begin{itemize}
+                \item The AHDC reconstruction is not completed
+                \item The calibration is still ongoing (ALERT and CLAS)
+                \item We made basic selection cuts
+                \item The BSA has been integrated over $Q^2$, $x_{B}$ and $-t$
+                \item The errors are only statistical (no $\pi ^0$ background subtraction)
+                \item The study has been done on 7.53 \% of the dataset
+            \end{itemize}
+        \item However, we can already see an asymmetry
+    \end{itemize}
+    
+
+    \centering
+    %\vspace{0.2cm}
+
+    \includegraphics[width=0.5\linewidth]{figures/bsa.pdf}
+    
+\end{frame}
+
+
+
+
+
+
+
+
+
+
+\end{document}
+
+
