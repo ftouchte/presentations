@@ -25,6 +25,6 @@
 
 - 2026/11/02 -- [Fix bugs about some wfType 2 incorrectly classified as 4](./pres_2026_11_02/build/main.pdf)
 
-
+- 2026/11/04 -- [Recap of the decoding, WF classification, example of hit selection](./pres_2026_11_04/build/main.pdf)
 
 
