@@ -23,6 +23,10 @@
 
 - 2026/09/04 -- [Reconstruction status - bug report](./pres_2026_09_04/build/main.pdf)
 
+<!-- - 2026/10/05 -- [Analysis details of the BSA extraction in p0v12 data (Coherent DVCS off 4He)](./pres_2026_10_05/build/main.pdf) -->
+
+- 2026/11/02 -- [Fix bugs about some wfType 2 incorrectly classified as 4](./pres_2026_11_02/build/main.pdf)
+
 
 
 
