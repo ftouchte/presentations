@@ -44,26 +44,69 @@
 %\tableofcontents
 %\end{frame}
 
+\begin{frame}{ALERT experiment}
+    \begin{itemize}
+        \item ALERT is an extension of CLAS eg6 at higher luminosity, 12 GeV era at JLab
+        \item It based on a new detector, \textit{A} \textit{L}ow \textit{E}nergy \textit{R}ecoil \textit{T}racker
+            \begin{itemize}
+                \item Along with the $^4\mbox{He}$, identify the two isobars $^3\mbox{He}$ et $^3\mbox{H}$
+                \item With kinematics: $70 < p < 400$ MeV/c, $\theta > 45^\circ$
+                \item To be placed inside a 5T solenoid magnet
+                \item To be transparent to the particles detected by CLAS
+            \end{itemize}
+        \item ALERT is a combination of a drift chamber (AHDC) and an array of scintillators (ATOF)
+        % \item The design makes ALERT fast : luminosity
+        % \item Identify the differents isotopes : H3, He3
+    \end{itemize}
+
+    \vspace{0.3cm}
+    \centering
+    \includegraphics[width=0.45\linewidth]{figures/alert_design_annotated.pdf}
+    \hspace{0.3cm}
+    \includegraphics[width=0.38\linewidth]{figures/clas12-with-alert.png}
+    
+\end{frame}
+
+% \begin{frame}{ALERT hyperbolic drift chamber (AHDC)}
+%     \begin{itemize}
+%         \item Cylindrical wire chamber filled with He/CO$_2$ (80/20\%)
+%         \item Novelty : 
+%             \begin{itemize}
+%                 \item All wires have the same $\diameter$, 30 µm, and AlMg5 material
+%                 \item Total of 3026 wires, 576 are readouts with positive charge
+%                 %\item No guard wires (sense wire $\leftrightarrow$ HV, field wire $\leftrightarrow$ ground)
+%                 \item Sense wires are distributed over 5 superlayers containing 1 or 2 layers (11, 21, 22, 31, 32, 41, 42, 51)
+%                 \item It has stereo angles varying from 3.8$^\circ$ to 7.4$^\circ$ between superlayers for the vz reconstruction
+%             \end{itemize}
+%     \end{itemize}
+
+%     \centering
+%     \vspace{0.4cm}
+
+%     %\includegraphics[width=0.35\linewidth]{figures/build/ahdc-cell.pdf}
+%     \begin{tabular}{cc}
+%         \includegraphics[width=0.32\linewidth]{figures/alert_design_annotated.pdf} & 
+%         \includegraphics[width=4cm, height=3.8cm]{figures/all-ahdc-wires.png}
+%     \end{tabular}
+% \end{frame}
+
 \begin{frame}{Issue with the time of saturated signals}
     \begin{itemize}
-        \item The time of arrival is extracted at half the amplitude
+        \item The first step of the reconstruction is the processing of the signals recorded by the AHDC sense wires
+        \item The time of arrival of the signals is extracted at half the amplitude
         \item For saturated signals, this creates a bias
             \begin{itemize}
                 \item The reconstructed time is under-estimated
                 \item This will impact track reconstruction of $\alpha$ particles
                 \item Some hits may not even pass selection cuts and tracks can be lost
             \end{itemize}
-        \item This study aims to reconstruct a corrected time
-            \begin{itemize}
-                \item The first step is to reconstruct the ADC of the saturated signals
-            \end{itemize}
+        \item The first step to fix this issue is to recover the ADC of the saturated signals
     \end{itemize}
 
     \centering
     \vspace{0.2cm}
 
-    \includegraphics[width=0.5\linewidth]{figures/isssue-time-of-saturated-signals.pdf}
-    % \includegraphics[width=0.45\linewidth]{figures/isssue-time-of-saturated-signals_decoding_case2.pdf}
+    \includegraphics[width=0.48\linewidth]{figures/isssue-time-of-saturated-signals.pdf}
 
 \end{frame}
 
@@ -72,9 +115,9 @@
     \begin{itemize}
         \item We look at two options 
             \begin{itemize}
-                \item Time over threshold (ToT) or maximum of the leading edge slope
+                \item Using the time over threshold or the maximum of the leading edge slope
                 \item We compare the two methods using non-saturated signals
-                \item We look at how correlated the variables are to the ADC
+                \item We look at how correlated these variables are to the ADC
             \end{itemize}
         \item We decide to use the maximum slope method
             \begin{itemize}
@@ -82,7 +125,6 @@
                 \item At larger ADC, the precision will likely be better
                 \item Large signals are often missing their trailing edge
             \end{itemize}
-        % \textit{\textbf{(ii)}} it is more precise than the slope at low ADC, \textit{\textbf{(iii)}} but the resolution increases with the ADC while it is almost constant in the slope method
     \end{itemize}
 
     \centering
@@ -159,7 +201,7 @@
 
 \begin{frame}{Preliminary DVCS analysis}
     \begin{itemize}
-        \item While the calibration of the data is not completed, we can already observe some processes within the ALERT data
+        \item The calibration of the data is not completed, but we can already observe some processes within the ALERT data
         \item I look at the coherent Deeply Virtual Compton Scattering (DVCS) off $^4\mbox{He}$ to access the quark GPDs
         %\item The first step of this analysis is to extract the Beam Spin Asymmetry (BSA) which is related to the Compton Form Factor $\mathcal{H}_{A}$
         \item In the following slides, I describe the process to select DVCS events and I present a preliminary extraction of the Beam Spin Asymmetry (BSA)
@@ -328,9 +370,9 @@
 
 \begin{frame}{DVCS candidates}
     \begin{itemize}
-        \item After selecting 1 electron, 1 photon and 1 AHDC track, we still need to verify the DVCS exclusivity distribution
+        \item After selecting 1 electron, 1 photon and 1 AHDC track, we still need to apply the DVCS exclusivity cuts
         \item At this stage, only $\Delta \Phi$ has a clear peak
-        \item I will apply : $|\Delta \Phi| < 15^\circ$
+        \item I choose : $|\Delta \Phi| < 15^\circ$
     \end{itemize}
 
     \centering
@@ -358,7 +400,7 @@
 \end{frame}
 
 
-\begin{frame}{DVCS candidates after $\Delta \Phi$ cut}
+\begin{frame}{DVCS candidates after the $\Delta \Phi$ cut}
     \begin{itemize}
         \item After the cut on $\Delta \Phi$, others peaks appear
         \item The others cuts are : 
@@ -367,7 +409,7 @@
     \centering
     \begin{minipage}{0.4\linewidth}
         \begin{itemize}
-            \item[{\color{blue} $\circ$}] cone angle $< 2^{\circ}$
+            \item[{\color{blue} $\circ$}] cone angle $\theta < 2^{\circ}$
             \item[{\color{blue} $\circ$}] $e^4\mbox{He}gX.\mbox{M2} < 0.05 \mbox{ GeV}^2$ 
         \end{itemize}
     \end{minipage}
@@ -402,7 +444,7 @@
 
 \end{frame}
 
-\begin{frame}{DVCS exclusivity cuts}
+\begin{frame}{DVCS exclusivity distributions}
 
     \begin{itemize}
         \item Here are the distributions after all exclusivity cuts
@@ -474,7 +516,7 @@
                 \item The errors are only statistical (no $\pi ^0$ background subtraction)
             \end{itemize}
         \item The study has been done on 7.53 \% of the data
-        \item However, we can already an asymmetry
+        \item However, we can already see an asymmetry
     \end{itemize}
     
 
@@ -483,7 +525,13 @@
 
     \includegraphics[width=0.55\linewidth]{figures/bsa.pdf}
 \end{frame}
+
 \appendix
+\begin{frame}
+    \centering
+    \Huge Appendix
+\end{frame}
+
 
 \begin{frame}{Technical details on the dataset}
     \begin{itemize}
