@@ -143,6 +143,28 @@
 
 \end{frame}
 
+\begin{frame}{Reconstructing the ADC}
+    \begin{itemize}
+        \item The maximum of the slope of the signal is linearly correlated to the amplitude of the signal
+            \begin{itemize}
+                \item Saturated hits seem to follow the trend
+            \end{itemize}
+        \item We can use the slope to estimate the amplitude of the signal
+            \begin{itemize}
+                \item We extract the ADC as a function of the slope from non-saturated signals and apply it to the saturated ones
+            \end{itemize}
+    \end{itemize}
+
+    \centering
+    \vspace{0.2cm}
+
+    \begin{tabular}{cc}
+        \includegraphics[width=0.48\linewidth]{figures/slope-versus-adc-all-signals.pdf} &
+        \includegraphics[width=0.48\linewidth]{figures/slope-versus-adc-wfType0.pdf} 
+    \end{tabular}
+    
+\end{frame}
+
 \begin{frame}{New time reconstruction}
     \begin{itemize}
         \item With the corrected amplitude, we can recompute the time
