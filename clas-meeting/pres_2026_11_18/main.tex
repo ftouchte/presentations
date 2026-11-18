@@ -21,6 +21,7 @@
 \setlength{\columnsep}{0pt}
 
 \usepackage{appendixnumberbeamer}
+\usepackage{diagbox}
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -31,6 +32,7 @@
 \newcommand{\eventname}{CLAS Collaboration Meeting}
 \author{Felix Touchte Codjo}
 \institute{IJCLab}
+\newcommand{\supervisorname}{Raphaël Dupré}
 \date{November 18, 2026}
 
 
@@ -46,8 +48,8 @@
 
 \begin{frame}{ALERT experiment}
     \begin{itemize}
-        \item ALERT is an extension of CLAS eg6 at higher luminosity, 12 GeV era at JLab
-        \item It based on a new detector, \textit{A} \textit{L}ow \textit{E}nergy \textit{R}ecoil \textit{T}racker
+        \item ALERT is an extension of CLAS eg6 at higher luminosity, 12 GeV era
+        \item It based on a new detector, A Low Energy Recoil Tracker
             \begin{itemize}
                 \item Along with the $^4\mbox{He}$, identify the two isobars $^3\mbox{He}$ et $^3\mbox{H}$
                 \item With kinematics: $70 < p < 400$ MeV/c, $\theta > 45^\circ$
@@ -55,52 +57,57 @@
                 \item To be transparent to the particles detected by CLAS
             \end{itemize}
         \item ALERT is a combination of a drift chamber (AHDC) and an array of scintillators (ATOF)
-        % \item The design makes ALERT fast : luminosity
-        % \item Identify the differents isotopes : H3, He3
+        \item The run period was from April 2025 to early September 2025
     \end{itemize}
 
     \vspace{0.3cm}
     \centering
-    \includegraphics[width=0.45\linewidth]{figures/alert_design_annotated.pdf}
-    \hspace{0.3cm}
-    \includegraphics[width=0.38\linewidth]{figures/clas12-with-alert.png}
+    % \includegraphics[width=0.45\linewidth]{figures/alert_design_annotated.pdf}
+    % \hspace{0.3cm}
+    % \includegraphics[width=0.38\linewidth]{figures/clas12-with-alert.png}
+
+    \begin{minipage}{0.4\linewidth}
+        \includegraphics[width=\linewidth]{figures/alert_design_annotated.pdf}
+    \end{minipage}
+    \begin{minipage}{0.53\linewidth}
+        \begin{itemize}
+            \item[$\circ$] \footnotesize Statistics in percentage for $6.54 \times 10^{10}$ trigger events collected.
+        \end{itemize}
+        \begin{table}
+        \scalebox{0.6}{
+            \renewcommand{\arraystretch}{1.3}
+            \begin{tabular}{|c|c|c|c|c|}
+            \hline
+            \diagbox{Target}{Beam} & 10.68 GeV & 6.47 GeV & 2.24 GeV & \textbf{Total}\\
+            \hline
+            $^4$He & 58.06 & 7.32 & 2.11 & 67.49\\
+            \hline
+            $^2$D & 27.13 & 0.07 & 2.06 & 29.26 \\
+            \hline
+            p  & 0.21 & 0.62 & 1.93 & 2.76 \\
+            \hline
+            empty  & 0.28 & 0.21 & 0 & 0.49 \\
+            \hline
+            \textbf{Total}  & 85.68 & 8.22 & 6.1 & \textbf{100 \%} \\
+            \hline
+            \end{tabular}
+        }
+        \end{table}
+    \end{minipage}
     
 \end{frame}
 
-% \begin{frame}{ALERT hyperbolic drift chamber (AHDC)}
-%     \begin{itemize}
-%         \item Cylindrical wire chamber filled with He/CO$_2$ (80/20\%)
-%         \item Novelty : 
-%             \begin{itemize}
-%                 \item All wires have the same $\diameter$, 30 µm, and AlMg5 material
-%                 \item Total of 3026 wires, 576 are readouts with positive charge
-%                 %\item No guard wires (sense wire $\leftrightarrow$ HV, field wire $\leftrightarrow$ ground)
-%                 \item Sense wires are distributed over 5 superlayers containing 1 or 2 layers (11, 21, 22, 31, 32, 41, 42, 51)
-%                 \item It has stereo angles varying from 3.8$^\circ$ to 7.4$^\circ$ between superlayers for the vz reconstruction
-%             \end{itemize}
-%     \end{itemize}
-
-%     \centering
-%     \vspace{0.4cm}
-
-%     %\includegraphics[width=0.35\linewidth]{figures/build/ahdc-cell.pdf}
-%     \begin{tabular}{cc}
-%         \includegraphics[width=0.32\linewidth]{figures/alert_design_annotated.pdf} & 
-%         \includegraphics[width=4cm, height=3.8cm]{figures/all-ahdc-wires.png}
-%     \end{tabular}
-% \end{frame}
-
 \begin{frame}{Issue with the time of saturated signals}
     \begin{itemize}
-        \item The first step of the reconstruction is the processing of the signals recorded by the AHDC sense wires
+        \item The AHDC reconstruction starts with the processing of the signals recorded by the sense wires
         \item The time of arrival of the signals is extracted at half the amplitude
         \item For saturated signals, this creates a bias
             \begin{itemize}
                 \item The reconstructed time is under-estimated
-                \item This will impact track reconstruction of $\alpha$ particles
+                \item This impacts the track reconstruction of $\alpha$ particles
                 \item Some hits may not even pass selection cuts and tracks can be lost
             \end{itemize}
-        \item The first step to fix this issue is to recover the ADC of the saturated signals
+        \item Our approach to fix this issue is to reconstruct the ADC of the saturated signals
     \end{itemize}
 
     \centering
@@ -176,7 +183,7 @@
                 \item There are no more hit accumulation at low time and large amplitude
                 \item We move from 2244 reconstructed tracks to 2478
                     \begin{itemize}
-                        \item[$\rightarrow$] Using 10 files of run 21476, on 4He at 10.6 GeV
+                        \item[$\rightarrow$] Using 10 files of run 21476, $^4$He, 10.6 GeV
                         \item[$\rightarrow$] Most of the gained tracks have very high energy deposit
                     \end{itemize}
                 
@@ -204,7 +211,7 @@
         \item The calibration of the data is not completed, but we can already observe some processes within the ALERT data
         \item I look at the coherent Deeply Virtual Compton Scattering (DVCS) off $^4\mbox{He}$ to access the quark GPDs
         %\item The first step of this analysis is to extract the Beam Spin Asymmetry (BSA) which is related to the Compton Form Factor $\mathcal{H}_{A}$
-        \item In the following slides, I describe the process to select DVCS events and I present a preliminary extraction of the Beam Spin Asymmetry (BSA)
+        \item In the following slides, I describe the procedure to select DVCS events and I present a preliminary extraction of the Beam Spin Asymmetry (BSA)
         
             \[
                 A_{LU} = \frac{1}{P_B} \cdot \frac{N^{+} - N^{-}}{N^{+} + N^{-}}
@@ -222,9 +229,11 @@
 \end{frame}
 
 \begin{frame}{Electron selection cuts}
+    \begin{itemize}
+        \item We select particles with pid = 11 in REC::Particle
+    \end{itemize}
     \begin{minipage}{0.49\linewidth}
         \begin{itemize}
-            \item We select particles with pid = 11
             \item $Q^2 > 1 \mbox{ GeV}^2$
             \item $W^2 > 4 \mbox{ GeV}^2$
         \end{itemize}
@@ -290,7 +299,7 @@
 \begin{frame}{Photon selection cuts and distributions}
     \begin{itemize}
         \item We require the detection of 1 electron
-        \item We select particle with pid = 22
+        \item We select particles with pid = 22 in REC::Particle
         \item We select high energy photons : $p_{\gamma} > 1.5 \mbox{ GeV}$
     \end{itemize}
 
@@ -510,7 +519,7 @@
         \item Warnings
             \begin{itemize}
                 \item The AHDC reconstruction is not completed (bugs, fine-tuning)
-                \item The calibration is still ongoing (ALERT and CLAS)
+                \item The calibration is still ongoing (ALERT \sout{and CLAS})
                 \item We made basic selection cuts
                 \item The BSA has been integrated over $Q^2$, $x_{B}$ and $-t$
                 \item The errors are only statistical (no $\pi ^0$ background subtraction)
@@ -529,7 +538,7 @@
 \appendix
 \begin{frame}
     \centering
-    \Huge Appendix
+    \Huge Backup slides
 \end{frame}
 
 
@@ -555,13 +564,10 @@
     
 \end{frame}
 
-\begin{frame}{Backup slide - phase space comparison}
+\begin{frame}{Phase space comparison}
 
     \begin{itemize}
-        \item Phase space comparison
-            \begin{itemize}
-                \item ALERT covers lower $x_{B}$ and higher $Q^{2}$ values
-            \end{itemize}
+        \item ALERT covers lower $x_{B}$ and higher $Q^{2}$ values
     \end{itemize}
     
     % \includegraphics[width=0.3\linewidth]{figures/phase_space.pdf}
@@ -582,10 +588,6 @@
 
         ALERT
     \end{minipage}
-    
-    
-    
-    
     
 \end{frame}
 

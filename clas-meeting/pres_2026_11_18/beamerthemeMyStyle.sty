@@ -105,12 +105,21 @@
 
   \begin{center}
 
-    \vspace{1.5cm}
+    \vspace{2cm}
 
     % ---------- Author & Institute ----------
-    {\large\color{TextColorBlue}\insertauthor\par}
-    \vspace{0.2cm}
-    {\color{TextColorBlue}\insertinstitute\par}
+    % {\large\color{TextColorBlue}\insertauthor\par}
+    
+    % \vspace{0.4cm}
+    % {\color{TextColorBlue}\supervisortag}
+    {
+      \large\color{TextColorBlue}
+      \insertauthor \par
+      \vspace{0.4cm}
+      \normalsize Supervisor : \supervisorname
+    }
+    % \vspace{0.2cm}
+    % {\color{TextColorBlue}\insertinstitute\par}
 
     \vfill
 
@@ -125,7 +134,7 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \setbeamertemplate{frametitle}{} % désactiver le titre par défaut pour pouvoir l'inclure dans le header
 \setbeamertemplate{headline}{
-\ifnum\value{framenumber}>1
+\ifnum\value{page}>1
   \leavevmode
   \begin{tikzpicture}[remember picture,overlay]
     \shade[left color=BgColorBlue!80, right color=BgColorBlue!20]
